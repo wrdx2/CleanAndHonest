@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="default" location="135,10" size="183,145">
+    <action name="doLogin" location="25,32" size="150,62">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="index.html" />
+      </result>
+      <result name="error">
+        <resourceEdge source="error" routing="0" target="login.jsp" />
+      </result>
+    </action>
+    <action name="changeCheckCode" location="25,101" size="150,40" />
+  </package>
+  <package name="shenpi" location="121,260" size="224,383">
+    <action name="shenpiList" location="25,33" size="150,62">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="shenpi.jsp" />
+      </result>
+      <result name="error">
+        <resourceEdge source="error" routing="0" target="shenpi.jsp" />
+      </result>
+    </action>
+    <action name="shenpixinxi" location="21,121" size="150,62">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="shenpixinxi.jsp" />
+      </result>
+      <result name="error">
+        <resourceEdge source="error" routing="0" target="shenpixinxi.jsp" />
+      </result>
+    </action>
+    <action name="delectsp" location="21,221" size="150,62">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="shenpiList" namespace="/shenpi" />
+      </result>
+      <result name="error">
+        <resourceEdge source="error" routing="0" target="shenpiList" namespace="/shenpi" />
+      </result>
+    </action>
+    <action name="doShenpi" location="21,321" size="150,62">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="shenpiList" namespace="/shenpi" />
+      </result>
+      <result name="error">
+        <resourceEdge source="error" routing="0" target="shenpiList" namespace="/shenpi" />
+      </result>
+    </action>
+  </package>
+  <webResource name="index.html" path="/backer/index.html" location="50,195" size="150,55" />
+  <webResource name="login.jsp" path="/backer/login.jsp" location="210,194" size="150,55" />
+  <webResource name="shenpi.jsp" path="/mainFrm/shenpi.jsp" location="-37,388" size="150,55" />
+  <webResource name="shenpixinxi.jsp" path="/mainFrm/shenpixinxi.jsp" location="500,200" size="150,55" />
+</Struts2Diagram>
+

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	
+    <!-- 将action托管给spring -->
+    <!-- <constant name="struts.objectFactory" value="spring"></constant> -->
+    
+	<package name="default" namespace="/" extends="struts-default">
+		<action name="doLogin" class="umAction">
+			<result name="success" type="redirect">/backer/index.html</result>
+			<result name="error" type="redirect">/backer/login.jsp</result>
+		</action>
+		<action name="changeCheckCode" class="com.cleanAndHonest.Action.changeCheck">
+		</action>
+	</package>
+	
+	<!-- 审批事项管理 -->
+	<package name="shenpi" namespace="/shenpi" extends="struts-default">
+		<action name="shenpiList" class="shenpiListAction">
+			<result name="success" >/mainFrm/shenpi.jsp</result>
+			<result name="error" >/mainFrm/shenpi.jsp</result>
+		</action>
+		<action name="myshenpiList" class="shenpiListAction" method="myshenpi">
+			<result name="success" >/mainFrm/shenpi.jsp</result>
+			<result name="error" >/mainFrm/shenpi.jsp</result>
+		</action>
+		<action name="shenpixinxi" class="shenpiListAction" method="spxinxi">
+			<result name="success">/mainFrm/shenpixinxi.jsp</result>
+			<result name="error">/mainFrm/shenpixinxi.jsp</result>
+		</action>
+		
+		<!-- 删除事项 -->
+		<action name="delectsp" class="shenpiListAction" method="delsp">
+			<result name="success" type="redirectAction">
+				<param name="namespace">/shenpi</param>
+				<param name="actionName">shenpiList</param>
+			</result>
+			<result name="error" type="redirectAction">
+				<param name="namespace">/shenpi</param>
+				<param name="actionName">shenpiList</param>
+			</result>
+		</action>
+		
+		<!-- 审批事项 -->
+		<action name="doShenpi" class="doShenpiAction" method="doShenpi">
+			<result name="success" type="redirectAction">
+				<param name="namespace">/shenpi</param>
+				<param name="actionName">shenpiList</param>
+			</result>
+			<result name="error" type="redirectAction">
+				<param name="namespace">/shenpi</param>
+				<param name="actionName">shenpiList</param>
+			</result>
+		</action>
+		
+	</package>
+</struts>

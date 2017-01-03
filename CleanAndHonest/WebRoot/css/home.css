@@ -1,0 +1,545 @@
+* {
+	margin: 0px;
+	padding: 0px;
+	font-family: "ËÎÌå";
+	SCROLLBAR-FACE-COLOR: #831619;
+	scrollbar-track-color: #619;
+	SCROLLBAR-HIGHLIGHT-COLOR: #FDF6E7;
+	SCROLLBAR-SHADOW-COLOR: #FDF6E7;
+	SCROLLBAR-ARROW-COLOR: #000000;
+	SCROLLBAR-BASE-COLOR: #FDF6E7;
+	SCROLLBAR-DARK-SHADOW-COLOR: #FDF6E7;
+}
+
+a:link {
+	color: #000000;
+	text-decoration: none;
+}
+
+a:visited {
+	color: #000000;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #eef607;
+}
+
+.mylink {
+	COLOR: #303030;
+	FONT-FAMILY: Verdana, Arial, ËÎÌå;
+	FONT-SIZE: 12px;
+	font-weight: bold;
+}
+
+a.mylink:link {
+	color: #333333;
+	font-size: 12px;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+a.mylink:visited {
+	color: #333333;
+	font-size: 12px;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+a.mylink:hover {
+	color: #1E84D8;
+	font-size: 12px;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.clear_float {
+	clear: both;
+	height: 0px;
+	font-size: 1px;
+}
+
+.float_left {
+	float: left
+}
+
+.float_right {
+	float: right
+}
+
+H2 {
+	PADDING-RIGHT: 10px;
+	PADDING-LEFT: 30px;
+	PADDING-BOTTOM: 0px;
+	font-size: 14px;
+	font-weight: bold;
+	COLOR: #333;
+	LINE-HEIGHT: 31px;
+	PADDING-TOP: 0px;
+	HEIGHT: 31px;
+	background: url(../image/lm_dot.gif) no-repeat 10px 9px;
+}
+
+H2 a:link,a:hover,a:visited {
+	color: #FFFFFF;
+}
+
+H3 {
+	PADDING-RIGHT: 10px;
+	PADDING-LEFT: 30px;
+	PADDING-BOTTOM: 0px;
+	font-size: 14px;
+	font-weight: bold;
+	COLOR: #FFF;
+	LINE-HEIGHT: 27px;
+	PADDING-TOP: 0px;
+	HEIGHT: 27px;
+	background: url(../image/lm_dot2.gif) no-repeat 10px 9px;
+}
+
+.more {
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 12px;
+	FLOAT: right;
+	padding-top: 10px;
+}
+
+.slide_bg {
+	background: url(../image/gov_WrzcNet_71.gif) repeat-x left top;
+}
+
+.lianmu_bg {
+	background: url(../image/gov_WrzcNet_52.gif) repeat-x left top;
+}
+
+ul {
+	margin: 0px;
+	padding: 0px;
+}
+
+li {
+	list-style: none;
+}
+
+div,input,table {
+	font-size: 12px;
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+td {
+	white-space: nowrap;
+}
+
+hr {
+	height: 1px;
+	color: #BBBBBB;
+}
+
+.normal_tr {
+	background: #FFFFFF
+}
+
+.Hover_tr {
+	background: #e8e8e8
+}
+
+.blue_tit {
+	color: #040404;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.black_title {
+	color: #000000;
+	font-size: 12px;
+	font-weight: bold;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+BODY{
+	color: #101010;
+	font-size: 12px;
+	background: url(../images/background.gif) #ffffff;
+}
+
+#Content {
+	margin: 0px auto;
+	width: 1002px;
+	background: #FFFFFF;
+}
+
+.list {
+	margin: 0px;
+	text-align: left;
+	padding: 2px;
+}
+
+.list Li {
+	list-style: none;
+	font-size: 12px;
+	line-height: 20px;
+}
+
+.list li span {
+	color: #666666;
+	float: right;
+	text-align: right;
+	clear: right;
+	font-size: 12px;
+	padding-right: 6px;
+}
+
+.list li a,.list li a:visited {
+	font-size: 12px;
+	color: #333333;
+	text-decoration: none;
+	padding: 0px;
+}
+
+.list li a:hover {
+	background: #F7F7F7;
+	color: #c90e05;
+	text-decoration: none;
+}
+
+.pic_word {
+	FONT-FAMILY: Verdana, Arial, "ËÎÌå";
+	FONT-SIZE: 8pt;
+	color: #ff0000;
+}
+
+.my {
+	color: #FF0000;
+	FONT-FAMILY: Verdana, Arial, ËÎÌå;
+	FONT-SIZE: 9pt
+}
+
+A.my:link {
+	COLOR: #FF0000;
+	TEXT-DECORATION: none
+}
+
+A.my:visited {
+	COLOR: #FF0000;
+	TEXT-DECORATION: none
+}
+
+A.my:active {
+	COLOR: #000000;
+	TEXT-DECORATION: none
+}
+
+A.my:hover {
+	COLOR: #000000;
+	TEXT-DECORATION: none
+}
+
+.content_text {
+	FONT-FAMILY: Verdana, Arial, ËÎÌå;
+	font-size: 14px;
+	line-height: 24px;
+	color: #333333;
+	padding: 5px;
+}
+
+#login {
+	width: 536px;
+	margin: 100px auto;
+}
+
+.login_01 {
+	height: 59px;
+	background: url(../image/login_01.gif) no-repeat;
+}
+
+.login_02 {
+	height: 140px;
+	background: url(../image/login_02.gif) no-repeat;
+}
+
+.login_03 {
+	height: 17px;
+	background: url(../image/login_03.gif) no-repeat;
+}
+
+.ver {
+	height: 40px;
+	text-align: center;
+	line-height: 40px;
+}
+
+.logincnt {
+	text-align: center;
+	margin: 48px 8px 0px 8px;
+}
+
+.copyright {
+	margin-top: 20px;
+	text-align: center;
+	color: #FFFFFF;
+}
+/*¹«¹²ÑùÊ½±í*/
+
+/*¶¥²¿ÑùÊ½*/
+.header {
+	margin: 0px auto;
+	height: 26px;
+	background: url(../images/WrzcNet_top_bj.jpg) repeat-x;
+}
+
+.login {
+	text-align: left;
+	line-height: 22px;
+	padding: 4px 0px 0px 8px;
+}
+
+.mymenu {
+	width: 380px;
+	text-align: right;
+	line-height: 26px;
+	padding-right: 8px;
+}
+
+.banner {
+	marign: 0;
+	padding: 0;
+}
+
+.white_tit {
+	color: #ffffff;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.white_tit a:link,.white_tit a:visited {
+	color: #ffffff;
+}
+
+.white_tit a:hover {
+	color: #ff0000;
+}
+
+.piclist_title a:link,a:visited,a:hover {
+	color: #000000;
+}
+
+.nav_main li {
+	float: left;
+	text-align: center;
+	list-style: none;
+}
+
+.mainnav {
+	height: 29px;
+	background-image: url(../images/gov_WrzcNet_09.gif);
+	background-repeat: repeat-x;
+	vertical-align: bottom;
+	line-height: 29px;
+	margin-top: 0px;
+	margin-right: auto;
+	margin-bottom: 0px;
+	margin-left: auto;
+	padding-top: 2px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+}
+
+.mainnav ul {
+	margin: 0px auto;
+	padding: 0px;
+}
+
+.mainnav li {
+	float: left;
+	text-align: center;
+	list-style: none;
+}
+
+.data {
+	color: #FF0000;
+	line-height: 27px;
+	padding: 0px 10px 0px 26px;
+	background: url(../images/time_dot.gif) no-repeat center left;
+}
+
+.nav_current {
+	background: url(../images/gov_WrzcNet_06.gif) no-repeat 0px;
+	display: block;
+	float: left;
+	font-size: 14px;
+	font-weight: bold;
+	height: 27px;
+	line-height: 27px;
+	text-decoration: none;
+	width: 87px;
+}
+
+a.f_nav:link {
+	color: #ffffff;
+	display: block;
+	height: 14px;
+	text-decoration: none;
+}
+
+a.f_nav:visited {
+	color: #ffffff;
+}
+
+a.f_nav:hover {
+	color: #000000;
+	display: block;
+	text-decoration: none;
+}
+
+.nav_link {
+	background: url(../images/gov_WrzcNet_07.gif) no-repeat 0px;
+	cursor: pointer;
+	float: left;
+	font-size: 14px;
+	font-weight: bold;
+	height: 27px;
+	line-height: 27px;
+	text-decoration: none;
+	width: 87px;
+}
+
+.nav_link a:link,.nav_link a:visited {
+	color: #FFFFFF;
+}
+
+.nav_link a:hover {
+	color: #000000;
+	background: url(../images/gov_WrzcNet_07_1.gif) no-repeat 0px;
+	display: block;
+}
+
+/*µ¼º½²Ëµ¥ÑùÊ½±í*/
+.global_nav {
+	background: url(../images/head/topbg.gif) repeat-x 0px;
+	margin: 0px auto;
+	padding: 0px 4px;
+	height: 38px;
+	line-height: 38px;
+}
+
+.global_nav li {
+	float: left;
+	WIDTH: auto;
+	font-size: 14px;
+	color: #FFFFFF;
+	font-weight: normal;
+	text-align: center;
+	background: url(../images/menu_dot.gif) no-repeat right top;
+}
+
+.global_nav li a:link,.global_nav li a:visited {
+	color: #FFFFFF;
+	padding: 0 10px;
+}
+
+.global_nav li a:hover {
+	display: block;
+	padding: 0 10px;
+	background: url(../images/menu_hover.gif) no-repeat center top;
+	COLOR: #f6ff00;
+	FONT-SIZE: 14px;
+	text-decoration: none;
+}
+
+.mtDropdownMenu {
+	LEFT: -1000px;
+	OVERFLOW: hidden;
+	POSITION: absolute;
+	TOP: -1000px;
+}
+
+.mtDropdownMenu .content {
+	POSITION: absolute
+}
+
+.mtDropdownMenu .items {
+	LEFT: 0px;
+	POSITION: relative;
+	TOP: 4px;
+	Z-INDEX: 10;
+	border: 1px solid #B9B8B8;
+}
+
+.mtDropdownMenu .item {
+	BORDER-BOTTOM: medium none;
+	BORDER-LEFT: medium none;
+	BORDER-RIGHT: medium none;
+	BORDER-TOP: medium none;
+	COLOR: #000000;
+	CURSOR: hand;
+	FONT-SIZE: 12px;
+	font-weight: normal;
+	line-height: 18px;
+	TEXT-DECORATION: none;
+}
+
+.mtDropdownMenu .background {
+	FILTER: alpha(opacity =   85);
+	LEFT: 0px;
+	POSITION: absolute;
+	TOP: 5px;
+	Z-INDEX: 1;
+	moz-opacity: .8;
+}
+
+.mtDropdownMenu .shadowRight {
+	FILTER: alpha(opacity =   40);
+	POSITION: absolute;
+	TOP: 3px;
+	WIDTH: 2px;
+	Z-INDEX: 3;
+	moz-opacity: .4
+}
+
+.mtDropdownMenu .shadowBottom {
+	FILTER: alpha(opacity =   40);
+	HEIGHT: 2px;
+	LEFT: 3px;
+	POSITION: absolute;
+	Z-INDEX: 1;
+	moz-opacity: .4
+}
+
+.mtDropdownMenu .hover {
+	COLOR: #eef607;
+	background-color: #E3E1E1;
+}
+
+.mtDropdownMenu .item IMG {
+	MARGIN-LEFT: 0px;
+}
+/*µ¼º½²Ëµ¥ÑùÊ½±í*/
+/*µ×²¿ÑùÊ½±í*/
+#footer {
+	margin: 0px auto;
+	background: #FFFFFF;
+}
+
+.foot_nav {
+	height: 29px;
+	text-align: center;
+	line-height: 29px;
+	background: url(../image/gov_WrzcNet_83.gif) repeat-x;
+}
+
+.lanmu_banshi {
+	height: 130px;
+	background: url(../image/gov_WrzcNet_84.gif repeat-x;
+}
+
+.foot_info {
+	text-align: center;
+	padding: 12px 0px;
+}
+/*µ×²¿ÑùÊ½±í*/
+/*ÍøÈíÖ¾³É°æÈ¨ËùÓÐPowered By WrzcNet www.Wrzc.Net */

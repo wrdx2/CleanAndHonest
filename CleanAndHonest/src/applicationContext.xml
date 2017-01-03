@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:cache="http://www.springframework.org/schema/cache"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans-4.0.xsd 
+						http://www.springframework.org/schema/aop 
+						http://www.springframework.org/schema/aop/spring-aop-4.0.xsd 
+						http://www.springframework.org/schema/context 
+						http://www.springframework.org/schema/context/spring-context-4.0.xsd 
+						http://www.springframework.org/schema/tx 
+						http://www.springframework.org/schema/tx/spring-tx-4.0.xsd 
+						http://www.springframework.org/schema/cache 
+						http://www.springframework.org/schema/cache/spring-cache-4.0.xsd" >
+
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName"
+			value="com.microsoft.sqlserver.jdbc.SQLServerDriver">
+		</property>
+		<property name="url" value="jdbc:sqlserver://127.0.0.1:1433"></property>
+		<property name="username" value="sa"></property>
+		<property name="password" value="sql"></property>
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.temp.use_jdbc_metadata_defaults">false</prop>
+				<prop key="hibernate.hbm2ddl.auto">none</prop>
+				<prop key="hibernate.connection.autocommit">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.default_schema">ssh</prop>
+				<prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>
+				<prop key="hibernate.cache.use_query_cache">false</prop>
+				<prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop>
+				<prop key="hibernate.query.substitutions">true 1,false 0</prop>
+				<prop key="hibernate.jdbc.batch_size">20</prop>
+				<prop key="hibernate.current_session_context_class">org.springframework.orm.hibernate4.SpringSessionContext</prop>
+			</props>
+		</property>
+		<property name="packagesToScan" value="com.cleanAndHonest.orm" />
+		<property name="mappingResources">
+			<list>
+				<value>com/cleanAndHonest/orm/User.hbm.xml</value>
+				<value>com/cleanAndHonest/orm/Consult.hbm.xml</value>
+				<value>com/cleanAndHonest/orm/Reply.hbm.xml</value>
+				<value>com/cleanAndHonest/orm/Shenpi.hbm.xml</value>
+				<value>com/cleanAndHonest/orm/Deparment.hbm.xml</value>
+				<value>com/cleanAndHonest/orm/VSr.hbm.xml</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- 定义事务管理 -->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<!-- 定义切面，在 * tdxy.*.service.*ServiceImpl.*(..) 中执行有关的hibernate session的事务操作 -->
+    <aop:config>
+		<aop:pointcut id="serviceOperation" expression="execution(* cleanAndHonest.*.*.*Impl.*(..))" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="serviceOperation" />
+	</aop:config>
+
+	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
+	<!-- 扫描有注解的文件  base-package 包路径 -->
+	<!-- <context:component-scan base-package="com.cleanAndHonest.orm"/> -->
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<!-- 事务执行方式
+				REQUIRED：指定当前方法必需在事务环境中运行，
+				如果当前有事务环境就加入当前正在执行的事务环境，
+				如果当前没有事务，就新建一个事务。
+				这是默认值
+				-->
+			<tx:method name="login*" propagation="REQUIRED" />
+			<tx:method name="create*" propagation="REQUIRED" />
+			<tx:method name="save*" propagation="REQUIRED" />
+			<tx:method name="add*" propagation="REQUIRED" />
+			<tx:method name="update*" propagation="REQUIRED" />
+			<tx:method name="remove*" propagation="REQUIRED" />
+			<tx:method name="del*" propagation="REQUIRED" />
+			<tx:method name="import*" propagation="REQUIRED" />
+			<!-- 指定当前方法以非事务方式执行操作，如果当前存在事务，就把当前事务挂起，等我以非事务的状态运行完，再继续原来的事务。
+				查询定义即可
+				read-only="true"  表示只读
+				-->
+			<tx:method name="*" propagation="REQUIRED"/>
+		</tx:attributes>
+	</tx:advice>
+    
+	<bean id="baseDAO" class="com.cleanAndHonest.DAO.Impl.BaseDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="userBiz" class="com.cleanAndHonest.Biz.Impl.UserBizImpl">
+		<property name="baseDAO" ref="baseDAO"></property>
+	</bean>
+	
+	<bean id="checkCode" class="com.cleanAndHonest.Util.newCheckCode"></bean>
+	
+	<bean id="umAction" class="com.cleanAndHonest.Action.LoginManagerAction" scope="prototype">
+		<property name="userBiz" ref="userBiz"></property>
+	</bean>
+	
+	<bean id="changeCheckCode" class="com.cleanAndHonest.Action.changeCheck" scope="prototype">
+		<property name="checkCode" ref="checkCode"></property> 
+	</bean>
+	
+	<!-- 查询审批事项列表 -->
+	<bean id="shenpiBiz" class="com.cleanAndHonest.Biz.Impl.ShenPiBizImpl">
+		<property name="baseDAO" ref="baseDAO" ></property>
+	</bean>
+	
+	<bean id="shenpiListAction" class="com.cleanAndHonest.Action.shenpiList" scope="prototype">
+		<property name="shenpiBiz" ref="shenpiBiz"></property>
+		<property name="shenpixinxiBiz" ref="shenpixinxiBiz"></property>
+		<property name="replyBiz" ref="replyBiz"></property>
+	</bean>
+	
+	<!-- 审批详细信息 -->
+	<bean id="shenpixinxiBiz" class="com.cleanAndHonest.Biz.Impl.ShenpixinxiBizImpl">
+		<property name="baseDAO" ref="baseDAO"></property>
+	</bean>
+	
+	<!-- 回复信息 -->
+	<bean id="replyBiz" class="com.cleanAndHonest.Biz.Impl.ReplyBizImpl">
+		<property name="baseDAO" ref="baseDAO"></property>
+	</bean>
+	
+	<!-- 审批事项 -->
+	<bean id="doShenpiBiz" class="com.cleanAndHonest.Biz.Impl.doShenpiBizImpl">
+		<property name="baseDAO" ref="baseDAO"></property>
+	</bean>
+	
+	<bean id="doShenpiAction" class="com.cleanAndHonest.Action.doShenpiAction" scope="prototype">
+		<property name="doShenpiBiz" ref="doShenpiBiz"></property>
+		<property name="shenpiBiz" ref="shenpiBiz"></property>
+	</bean>
+	
+</beans>
