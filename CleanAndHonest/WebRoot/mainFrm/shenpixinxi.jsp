@@ -232,7 +232,26 @@ html {
 											<tr>
 												<td align="right" bgcolor="#FFFFFF">事项附件:</td>
 												<td bgcolor="#FFFFFF">
-													<s:a><s:property value="sr.sattach"/></s:a>
+													<!-- 带参数的<s:a/> 标签的写法 -->
+													<!-- 附件的在线预览 -->
+													<s:url id="url" action="">
+														<s:param name="fileName">
+															<s:property value='sr.sattach'/>
+														</s:param>
+													</s:url>
+													<s:a href="%{url}">
+														<s:property value='sr.sattach'/>
+													</s:a>
+													
+													<!-- 附件的下载 -->
+													<s:url id="url" action="../DownLoadAction">
+														<s:param name="fileName">
+															<s:property value='sr.sattach'/>
+														</s:param>
+													</s:url>
+													<s:a href="%{url}">
+														下载
+													</s:a>
 												</td>
 											</tr>
 											

@@ -4,16 +4,58 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
 	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
-  <display-name></display-name>	
-  <welcome-file-list>
-    <welcome-file>pages/index.jsp</welcome-file>
-  </welcome-file-list>
-  
-  <listener>
-  	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-  </listener>
- 
-  <filter>
+	<display-name></display-name>	
+	
+	<!-- 初始化使用到的插件路径参数 -->
+	<servlet>
+		<servlet-name>InitServlet</servlet-name>
+		<servlet-class>com.cleanAndHonest.servlet.InitServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<!-- 配置过滤器，同时把所有的请求都转为utf-8编码 -->
+	<filter>
+		<filter-name>Spring character encoding filter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>utf-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>Spring character encoding filter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	<!--登陆访问过滤器  -->
+	<filter>
+  		<filter-name>UserFilter</filter-name>
+  		<filter-class>
+  			com.cleanAndHonest.filter.UserFilter
+  		</filter-class>
+  	</filter>
+  	<filter-mapping>
+  		<filter-name>UserFilter</filter-name>
+  		<url-pattern>/*</url-pattern>
+  	</filter-mapping>
+  	
+  	<!-- 欢迎页面 -->
+  	<welcome-file-list>
+  		<welcome-file>pages/index.jsp</welcome-file>
+  	</welcome-file-list>
+  	
+  	<!-- spring监听器 -->
+  	<listener>
+  		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  	</listener>
+  	
+  	<!-- spring session过滤器  -->
+  	<filter>
         <filter-name>OpenSessionInView</filter-name>
         <filter-class>org.springframework.orm.hibernate4.support.OpenSessionInViewFilter</filter-class>
    		<init-param>
@@ -25,19 +67,21 @@
         <filter-name>OpenSessionInView</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
-  
-  <context-param>
-  	<param-name>contextConfigLocation</param-name>
-  	<param-value>classpath:applicationContext.xml</param-value>
-  </context-param>
-  
-  <filter>
-  	<filter-name>struts2</filter-name>
-  	<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
-  </filter>
-  <filter-mapping>
-  	<filter-name>struts2</filter-name>
-  	<url-pattern>/*</url-pattern>
-  </filter-mapping>
+    
+    <!-- spring配置路径 -->
+    <context-param>
+    	<param-name>contextConfigLocation</param-name>
+  		<param-value>classpath:applicationContext.xml</param-value>
+  	</context-param>
+  	
+  	<!-- struts2 过滤器 -->
+  	<filter>
+  		<filter-name>struts2</filter-name>
+  		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+  	</filter>
+  	<filter-mapping>
+  		<filter-name>struts2</filter-name>
+  		<url-pattern>/*</url-pattern>
+  	</filter-mapping>
   
 </web-app>

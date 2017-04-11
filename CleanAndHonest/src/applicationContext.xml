@@ -109,7 +109,8 @@
 	
 	<bean id="checkCode" class="com.cleanAndHonest.Util.newCheckCode"></bean>
 	
-	<bean id="umAction" class="com.cleanAndHonest.Action.LoginManagerAction" scope="prototype">
+	<!-- 用户管理 -->
+	<bean id="UserAction" class="com.cleanAndHonest.Action.UserAction" scope="prototype">
 		<property name="userBiz" ref="userBiz"></property>
 	</bean>
 	

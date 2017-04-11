@@ -16,7 +16,9 @@ body {
 	margin-bottom: 0px;
 }
 </style>
-<link href="../css/css.css" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/css/css.css" rel="stylesheet" type="text/css" />
+<script type="text/javaScript" src="${pageContext.request.contextPath}/js/jquery.js">
+</script>
 <script type="text/javascript" >
 function checfm(){
 	var name=document.forms[0].loginName.value.length;
@@ -36,15 +38,35 @@ function checfm(){
 	}
 }
 </script>
-<script type="text/javaScript" src="../js/checkCode.js">
+<!-- <script type="text/javaScript" src="../js/checkCode.js">
+</script> -->
+<script type="text/javascript">
+	function change(){
+		$.ajax({
+			type : "POST",
+						url : "${pageContext.request.contextPath}/changeCheckCode",
+						data : $("#checkCode"),
+						dataType : "json",
+						success : function(json) {
+							if (json.success) {
+								//$("#checkCode").attr("src","../images/pic05.gif?" + Math.random());
+								$("#checkCode").attr("src","data:image/gif;base64," + json.obj);
+								$("#checkCode").attr("title",json.msg);
+							}else{
+								alert(json.msg);
+							}
+						}
+		});
+	}
 </script>
+
 </head>
 
 <body id="first" onload="change();">
 	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 		<tr>
-			<td height="147" background="../images/top02.gif"><img
-				src="../images/top03.gif" width="776" height="147" />
+			<td height="147" background="${pageContext.request.contextPath}/images/top02.gif"><img
+				src="${pageContext.request.contextPath}/images/top03.gif" width="776" height="147" />
 			</td>
 		</tr>
 	</table>
@@ -57,7 +79,7 @@ function checfm(){
 						<td><table width="100%" border="0" cellpadding="0"
 								cellspacing="0" class="login-text01">
 								<tr>
-									<td align="center"><img src="../images/ico13.gif"
+									<td align="center"><img src="${pageContext.request.contextPath}/images/ico13.gif"
 										width="107" height="97" />
 									</td>
 								</tr>
@@ -66,13 +88,13 @@ function checfm(){
 								</tr>
 							</table>
 						</td>
-						<td><img src="../images/line01.gif" width="5" height="292" />
+						<td><img src="${pageContext.request.contextPath}/images/line01.gif" width="5" height="292" />
 						</td>
 					</tr>
 				</table>
 			</td>
 			<td>
-				<form name="login" action="./../doLogin" method="post">
+				<form name="login" action="loginUserAction" method="post">
 					<table width="100%" border="0" cellspacing="0" cellpadding="0">
 						<tr>
 							<td width="31%" height="35" class="login-text02">用户名称：<br />
@@ -91,7 +113,7 @@ function checfm(){
 							<td height="35" class="login-text02">验证图片：<br />
 							</td>
 							<td><img id="checkCode" onclick="change();"
-								src="../images/pic05.gif" width="109" height="30" title='' /> 
+								src="${pageContext.request.contextPath}/images/pic05.gif" width="109" height="30" title='' /> 
 								<!-- <a href="./../changeCheckCode" class="login-text03">
 								看不清楚，换张图片</a> -->
 								

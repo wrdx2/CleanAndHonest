@@ -86,12 +86,12 @@ body {
 									<%-- <span class="left-font02">
 									<%=((User) session.getAttribute("user")).getAuthority()%></span> --%>
 										您好， <span class="left-font02"> 
-										<%=((User) session.getAttribute("user")).getUname()%></span>
+										${sessionScope.uName}</span>
 									</td>
 								</tr>
 								<tr>
 									<td height="22" class="left-font01">[&nbsp; 
-										<a href="../backer/login.jsp" 
+										<a href="${pageContext.request.contextPath}/logoutUserAction" 
 											target="_top" class="left-font01">安全退出</a>&nbsp;]
 									</td>
 								</tr>
@@ -135,7 +135,7 @@ body {
 						<td width="9%" height="21">
 							<img id="xiaotu21" src="../images/ico06.gif" width="8" height="12" /></td>
 						<td width="91%">
-							<a href="../shenpi/myshenpiList?dep=<%=((User) session.getAttribute("user")).getOffice()%>" target="mainFrame"
+							<a href="../shenpi/myshenpiList?dep=${sessionScope.uOffi}" target="mainFrame"
 							class="left-font03" onClick="tupian('21');">我的审批事项管理</a></td>
 					</tr>
 				</table>

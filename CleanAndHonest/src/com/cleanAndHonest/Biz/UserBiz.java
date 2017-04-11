@@ -1,9 +1,12 @@
 package com.cleanAndHonest.Biz;
 
-import java.util.List;
-
 import com.cleanAndHonest.orm.User;
 
 public interface UserBiz {
-	public List<User> login(User user);
+	/**
+	 * 用户登录
+	 * @param user 用户信息
+	 * @return 登陆成功返回true
+	 */
+	public boolean login(User user);
 }

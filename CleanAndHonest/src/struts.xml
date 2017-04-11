@@ -7,12 +7,22 @@
     <!-- <constant name="struts.objectFactory" value="spring"></constant> -->
     
 	<package name="default" namespace="/" extends="struts-default">
-		<action name="doLogin" class="umAction">
-			<result name="success" type="redirect">/backer/index.html</result>
-			<result name="error" type="redirect">/backer/login.jsp</result>
+		<action name="*UserAction" class="UserAction" method="{1}">
+			<result name="loginSuccess" type="redirect">/backer/index.html</result>
+			<result name="loginError" type="redirect">/pages/LoginMessage.jsp</result>
+			<result name="logout">/backer/login.jsp</result>
 		</action>
+		<!-- 验证码 -->
 		<action name="changeCheckCode" class="com.cleanAndHonest.Action.changeCheck">
+			<!-- <result type="stream">
+				<param name="contentType">image/jpeg</param>
+		        <param name="inputName">inputStream</param>
+	        </result> -->
 		</action>
+	</package>
+	
+	<package name="article" namespace="/aeticle" extends="struts-default">
+		<!-- <action name=""></action> -->
 	</package>
 	
 	<!-- 审批事项管理 -->

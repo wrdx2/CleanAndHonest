@@ -4,11 +4,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.util.Random;
-
-import javax.imageio.ImageIO;
 
 public class newCheckCode {
 	// 产生由4位数字构成的验证码
@@ -16,18 +13,27 @@ public class newCheckCode {
 	private String valcode = "";
 	/*private ActionContext ac = ActionContext.getContext();*/
 	
+	/**
+	 * 获取生成的验证码
+	 * @return 四位验证码
+	 */
 	public String getValcode() {
 		return valcode;
 	}
 
-	String srcImagePath = "C:\\Java\\Tomcat 7.0\\webapps\\CleanAndHonest\\images\\pic05.gif";
+	/*String srcImagePath = "C:\\Java\\Tomcat7.0\\webapps\\CleanAndHonest\\images\\pic05.gif";*/
 
 	public newCheckCode(){
 		// TODO Auto-generated constructor stub
 		super();
 	}
 	
-	public void createCode() throws IOException{
+	/**
+	 * 创建验证码图片
+	 * @return
+	 * @throws IOException
+	 */
+	public BufferedImage createCode() throws IOException{
 		Random rd = new Random();
 		String vc = "";
 		
@@ -35,24 +41,13 @@ public class newCheckCode {
 			vc += rd.nextInt(10);
 		
 		valcode=vc;
-
-		/*// 把产生的验证码存入到Session中
-		Map<String, Object> session = ac.getSession();
-		session.put("valcode", valcode);*/
-
+		
 		// 产生图片
 		int width = 109;
 		int height = 30;
 		BufferedImage img = new BufferedImage(width, height,
 				BufferedImage.TYPE_INT_RGB);
 		
-		/*//读入图片文件     
-        File file = new File(srcImagePath);
-        // 构造Image对象
-        BufferedImage img = ImageIO.read(file);
-        int width = img.getWidth();
-        int height = img.getHeight();*/
-        
 		// 获取一个Graphics
 		Graphics g = img.getGraphics();
 
@@ -83,9 +78,13 @@ public class newCheckCode {
 			g.drawString(valcode.charAt(i) + "", width / valcode.length() * i
 					+ 2,(int) (Math.random()*8+18));
 		}
-
+		/*HttpServletResponse response = ServletActionContext.getResponse();
+		OutputStream out = response.getOutputStream();
 		// 输出图像
 		g.dispose();
-		ImageIO.write(img, "gif", new File(srcImagePath));
+		ImageIO.write(img, "gif", out);
+		out.close();*/
+		
+		return img;
 	}
 }

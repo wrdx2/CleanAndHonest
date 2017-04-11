@@ -12,18 +12,18 @@
 <meta http-equiv="Content-Language" content="zh-cn">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>高校廉政建设</title>
-<link href="../css/home.css" rel="stylesheet">
-<link href="../css/index.css" rel="stylesheet">
+<link href="./css/home.css" rel="stylesheet">
+<link href="./css/index.css" rel="stylesheet">
 <link rel="Shortcut Icon" href="WRZCNET.ico">
 <!--IE地址栏前换成自己的图标-->
 <link rel="Bookmark" href="WRZCNET.ico">
 <!--可以在收藏夹中显示出你的图标-->
-<script language="JavaScript">  function Helpor_net()
- {
-    return true;
- }
- window.onerror = Helpor_net;
- -->
+<script language="JavaScript">
+function Helpor_net()
+{
+	return true;
+}
+window.onerror = Helpor_net;
 </script>
 <script src="inc/slide.js" type="text/javascript"></script>
 
