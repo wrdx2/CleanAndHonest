@@ -14,11 +14,11 @@ body {
 	margin-top: 0px;
 	margin-right: 0px;
 	margin-bottom: 0px;
-	background-image: url(../images/left.gif);
+	background-image: url(${pageContext.request.contextPath}/images/left.gif);
 }
 -->
 </style>
-<link href="../css/css.css" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/css/css.css" rel="stylesheet" type="text/css" />
 </head>
 <SCRIPT language=JavaScript>
 	function tupian(idt) {
@@ -32,7 +32,7 @@ body {
 			if (i != idt * 1) {
 				var tp2 = document.getElementById('xiaotu' + i);
 				if (tp2 != undefined) {
-					tp2.src = "../images/ico06.gif";
+					tp2.src = "${pageContext.request.contextPath}/images/ico06.gif";
 				}//图片ico06为蓝色的正方形
 			}
 		}
@@ -55,14 +55,14 @@ body {
 					o.style.display = "none";
 					var image = document.all(name3);
 					//alert(image);
-					image.src = "../images/ico04.gif";
+					image.src = "${pageContext.request.contextPath}/images/ico04.gif";
 				}
 			}
 			objectobj.style.display = "";
-			imgobj.src = "../images/ico03.gif";
+			imgobj.src = "${pageContext.request.contextPath}/images/ico03.gif";
 		} else {
 			objectobj.style.display = "none";
-			imgobj.src = "../images/ico04.gif";
+			imgobj.src = "${pageContext.request.contextPath}/images/ico04.gif";
 		}
 	}
 </SCRIPT>
@@ -128,14 +128,14 @@ body {
 							<img id="xiaotu20"
 							src="../images/ico06.gif" width="8" height="12" /></td>
 						<td width="91%">
-							<a href="../shenpi/shenpiList" target="mainFrame"
+							<a href="${pageContext.request.contextPath}/shenpi/shenpiList" target="mainFrame"
 							class="left-font03" onClick="tupian('20');">审批事项管理</a></td>
 					</tr>
 					<tr>
 						<td width="9%" height="21">
 							<img id="xiaotu21" src="../images/ico06.gif" width="8" height="12" /></td>
 						<td width="91%">
-							<a href="../shenpi/myshenpiList?dep=${sessionScope.uOffi}" target="mainFrame"
+							<a href="${pageContext.request.contextPath}/shenpi/myshenpiList?dep=${sessionScope.uOffi}" target="mainFrame"
 							class="left-font03" onClick="tupian('21');">我的审批事项管理</a></td>
 					</tr>
 				</table>
@@ -170,17 +170,16 @@ body {
 								src="../images/ico06.gif" width="8" height="12" />
 						</td>
 						<td width="91%">
-							<a href="lanmu.htm" target="mainFrame"
+							<a href="${pageContext.request.contextPath}/article/lanmuArticleAction" target="mainFrame"
 								class="left-font03" onClick="tupian('17');">栏目管理</a>
 						</td>
 					</tr>
 					<tr>
 						<td width="9%" height="20">
-							<img id="xiaotu18"
-								src="../images/ico06.gif" width="8" height="12" />
+							<img id="xiaotu18" src="../images/ico06.gif" width="8" height="12" />
 						</td>
 						<td width="91%">
-							<a href="listtxt.htm" target="mainFrame" 
+							<a href="${pageContext.request.contextPath}/article/listArticleAction" target="mainFrame"
 								class="left-font03" onClick="tupian('18');">查看文章</a>
 						</td>
 					</tr>
@@ -190,17 +189,17 @@ body {
 								src="../images/ico06.gif" width="8" height="12" />
 						</td>
 						<td width="91%">
-							<a href="addtxt.htm" target="mainFrame" 
+							<a href="${pageContext.request.contextPath}/article/addArticleAction" target="mainFrame" 
 								class="left-font03" onClick="tupian('19');">添加文章</a>
 						</td>
 					</tr>
 					<tr>
 						<td width="9%" height="20">
 							<img id="xiaotu24"
-								src="../images/ico06.gif" width="8" height="12" />
+								src="${pageContext.request.contextPath}/images/ico06.gif" width="8" height="12" />
 						</td>
 						<td width="91%">
-							<a href="mytxt.htm" target="mainFrame"
+							<a href="${pageContext.request.contextPath}/article/mytxtArticleAction" target="mainFrame"
 								class="left-font03" onClick="tupian('24');">我的文章 </a>
 						</td>
 					</tr>

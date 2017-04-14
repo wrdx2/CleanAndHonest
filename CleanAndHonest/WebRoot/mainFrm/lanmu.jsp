@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" import="com.cleanAndHonest.orm.Shenpi" pageEncoding="utf-8"%>
+<%@ page language="java" import="java.util.*" import="com.cleanAndHonest.orm.Lanmu" pageEncoding="utf-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%
 String path = request.getContextPath();
@@ -7,7 +7,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>审批事项</title>
+<title>栏目管理</title>
 <style type="text/css">
 body {
 	margin-left: 0px;
@@ -53,18 +53,18 @@ html {
 </style>
 
 <link href="../css/css.css" rel="stylesheet" type="text/css" />
-<script type="text/JavaScript" src="../js/jquery.js">
-	
-</script>
-<script type="text/JavaScript" src="../js/page.js">
-	
-</script>
+<script type="text/JavaScript" src="${pageContext.request.contextPath}/js/jquery.js"></script>
+<script type="text/JavaScript" src="${pageContext.request.contextPath}/js/jquery.form.js"></script>
+<script type="text/JavaScript" src="${pageContext.request.contextPath}/js/page.js"></script>
+<script src="${pageContext.request.contextPath}/js/layer/layer.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/lanmu.js"></script>
 <link href="../css/style.css" rel="stylesheet" type="text/css" />
 </head>
 <SCRIPT language=JavaScript>
 	/* function sousuo() {
 		window.open("gaojisousuo.htm","","depended=0,alwaysRaised=1,width=800,height=510,location=0,menubar=0,resizable=0,scrollbars=0,status=0,toolbar=0");
 	} */
+	pageSize2(8);
 	function selectAll() {
 		var obj = document.fom.elements;
 		for ( var i = 0; i < obj.length; i++) {
@@ -86,6 +86,7 @@ html {
 		}
 	}
 </SCRIPT>
+
 
 <body>
 	<form name="fom" id="fom" method="post" action="">
@@ -139,9 +140,9 @@ html {
 											<span class="newfont07">选择：
 												<a href="#" class="right-font08" onclick="selectAll();">全选</a> -
 												<a href="#" class="right-font08" onclick="unselectAll();">反选</a>
-											</span> 
-											<input name="Submit" type="button" class="right-button08" value="删除所选事项" /> 
-											<input name="Submit2" type="button" class="right-button08" value="添加" />
+											</span>
+											<input name="Submit" type="button" class="right-button08" onclick="deleteLmAll();" value="删除所选栏目" /> 
+											<input name="Submit2" type="button" class="right-button08" onclick="addlmContent();" value="添加" />
 										</td>
 									</tr>
 									<tr>
@@ -154,29 +155,30 @@ html {
 												</tr> -->
 												<tr id="show_table_one" bgcolor="#EEEEEE">
 													<td width="4%" align="center" height="30">选择</td>
-													<td width="10%">事项标题</td>
-													<td width="10%">创建时间</td>
-													<td width="10%">申请人</td>
-													<td width="10%">审批部门</td>
-													<td width="5%">审批状态</td>
-													<td width="12%">操作</td>
+													<td width="10%">栏目类型</td>
+													<td width="10%">审核状态</td>
+													<td width="10%">显示状态</td>
+													<td width="10%">操作</td>
 												</tr>
 												
-												<s:iterator value="list">
+												<s:iterator value="lanmu">
 												<tr id="show_table tr" bgcolor="#FFFFFF">
 													<td height="20">
-													<input type="checkbox" name="delid" value=<s:property value="sno" /> />
+													<input type="checkbox" name="delid" value=<s:property value="lno" /> />
 													</td>
-												     <td><s:property value="stitle"/></td>
-												     <td><s:property value="stime"/></td>
-												     <td><s:property value='sname'/></td>
-												     <td><s:property value='sdep'/></td>
-												     <td><s:if test='sstate == 0'>未审批</s:if>
-												     	 <s:else>已审批</s:else>
+												     <td><s:property value="ltype"/></td>
+												     <td><s:if test='lstate == 0'>未审核
+												     	 <td></td>
+												     	 </s:if>
+												     	 <s:elseif test='lstate == 1 '>已审核
+												     	 <td>未显示</td>
+												     	 </s:elseif>
+												     	 <s:elseif test="lstate == 2">已审核
+												     	 <td>已显示</td>
+												     	 </s:elseif>
+												     	 
 												     </td>
-												     <td><s:a href='shenpixinxi?sno=%{sno}'>审批</s:a> |
-												     <!-- <a href="shenpixinxi.jsp">审批</a> | -->
-														<s:a href='delectsp?sno=%{sno}'>删除</s:a>
+												     <td><s:a name="renameLm" href="#">修改</s:a>
 													</td>
 												</tr>
 												</s:iterator>
@@ -184,6 +186,7 @@ html {
 										</td>
 									</tr>
 								</table>
+								
 								<table width="95%" border="0" align="center" cellpadding="0"
 									cellspacing="0">
 									<tr>
@@ -249,5 +252,9 @@ html {
 			</tr>
 		</table>
 	</form>
+	<div>
+	<form id="addLmForm">
+	</form>
+	</div>
 </body>
 </html>

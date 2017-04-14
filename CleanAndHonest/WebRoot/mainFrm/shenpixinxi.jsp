@@ -55,10 +55,24 @@ html {
 }
 -->
 </style>
-
+<script type="text/javaScript" src="${pageContext.request.contextPath}/js/jquery.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/flexpaper/js/jquery.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/flexpaper/js/flexpaper.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/flexpaper/js/flexpaper_handlers.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/flexpaper/js/flexpaper_handlers_debug.js"></script>
+<script src="${pageContext.request.contextPath}/js/layer/layer.min.js"></script>
 <link href="../css/css.css" rel="stylesheet" type="text/css" />
 <script type="text/JavaScript">
-	
+function viewName(){
+	$.layer({
+	    type: 2,
+	    border: [0],
+	    title: false,
+	    closeBtn: [0, true],
+	    iframe: {src : '../article/viewArticleAction'},
+	    area: ['950px', '500px']
+	});
+}
 </script>
 <link href="../css/style.css" rel="stylesheet" type="text/css" />
 </head>
@@ -234,15 +248,16 @@ html {
 												<td bgcolor="#FFFFFF">
 													<!-- 带参数的<s:a/> 标签的写法 -->
 													<!-- 附件的在线预览 -->
-													<s:url id="url" action="">
+													<%-- <s:url id="url" action="../article/viewArticleAction">
 														<s:param name="fileName">
 															<s:property value='sr.sattach'/>
 														</s:param>
 													</s:url>
 													<s:a href="%{url}">
 														<s:property value='sr.sattach'/>
-													</s:a>
-													
+													</s:a> --%>
+													<a id="url" onclick="viewName();"><s:property value='sr.sattach'/>
+													</a>
 													<!-- 附件的下载 -->
 													<s:url id="url" action="../DownLoadAction">
 														<s:param name="fileName">
@@ -283,7 +298,7 @@ html {
 													回复:
 												</td>
 												<td bgcolor="#FFFFFF" height="200px">
-												<iframe name="text" src=".././backer/textarea.jsp" 
+												<iframe name="text" src="${pageContext.request.contextPath}/backer/textarea.jsp" 
 												height="100%" width="98%" frameborder="0" 
 												scrolling="no" >
 												</iframe>

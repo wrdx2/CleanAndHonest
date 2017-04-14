@@ -4,7 +4,7 @@ var curPage = 0; // 显示第curPage页
 var len; // 总行数
 var page; // 总页数
 $(function() {
-	len = $("#show_shenpi tr").length - 1; // 去掉表头
+	len = $("#show_table tr").length - 1; // 去掉表头
 	page = len % pageSize == 0 ? len / pageSize
 			: Math.floor(len / pageSize) + 1;// 根据记录条数，计算页数
 	console.log("len:" + len + "page:" + page);
@@ -53,12 +53,12 @@ function displayPage() {
 		end = len;
 	}
 	console.log("  begin:" + len + "   end:" + end);
-	$("#show_shenpi tr").hide();
+	$("#show_table tr").hide();
 	$('input:checkbox').attr('name','delid1');
-	$("#show_shenpi tr").each(function(i) {
+	$("#show_table tr").each(function(i) {
 		if (i - 1 >= begin && i - 1 < end)// 显示第page页的记录
 		{
-			$("#show_shenpi_one").show();
+			$("#show_table_one").show();
 			$(this).show();
 			$(this).find("input").attr("name","delid");
 			//$(this.input:checkbox).attr('name','delid');
@@ -69,14 +69,14 @@ function displayPage() {
 }
 
 //改变每页显示条数
-function pageSize2() {
+function pageSize2(size) {
 	curPage = 0; // 显示第curPage页
-	pageSize = parseInt(document.getElementById("pageSize").value);
-	len = $("#show_shenpi tr").length - 1; // 去掉表头
+	pageSize = parseInt(size);
+	len = $("#show_table tr").length - 1; // 去掉表头
 	page = len % pageSize == 0 ? len / pageSize
 			: Math.floor(len / pageSize) + 1;// 根据记录条数，计算页数
 	console.log("len:" + len + "   page:" + page);
-	document.getElementById("page").innerHTML = page;
+	$("#page").innerHTML = page;
 	curPage = 1;
 	displayPage();// 显示第一页
 }

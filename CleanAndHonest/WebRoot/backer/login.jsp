@@ -44,18 +44,18 @@ function checfm(){
 	function change(){
 		$.ajax({
 			type : "POST",
-						url : "${pageContext.request.contextPath}/changeCheckCode",
-						data : $("#checkCode"),
-						dataType : "json",
-						success : function(json) {
-							if (json.success) {
-								//$("#checkCode").attr("src","../images/pic05.gif?" + Math.random());
-								$("#checkCode").attr("src","data:image/gif;base64," + json.obj);
-								$("#checkCode").attr("title",json.msg);
-							}else{
-								alert(json.msg);
-							}
-						}
+			url : "${pageContext.request.contextPath}/changeCheckCode",
+			data : $("#checkCode"),
+			dataType : "json",
+			success : function(json) {
+				if (json.success) {
+					//$("#checkCode").attr("src","../images/pic05.gif?" + Math.random());
+					$("#checkCode").attr("src","data:image/gif;base64," + json.obj);
+					$("#checkCode").attr("title",json.msg);
+				}else{
+					alert(json.msg);
+				}
+			}
 		});
 	}
 </script>

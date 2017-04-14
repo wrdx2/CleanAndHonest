@@ -32,6 +32,7 @@ public class BaseDAOImpl<T> implements BaseDAO<T>{
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.getCurrentSession();
 		Serializable serializable = session.save(o);
+		session.flush();
 		return serializable;
 	}
 
@@ -56,6 +57,7 @@ public class BaseDAOImpl<T> implements BaseDAO<T>{
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.getCurrentSession();
 		session.saveOrUpdate(o);
+		//session.flush();
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })

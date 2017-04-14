@@ -7,6 +7,7 @@ import org.apache.struts2.ServletActionContext;
 import com.cleanAndHonest.Biz.UserBiz;
 import com.cleanAndHonest.DAO.BaseDAO;
 import com.cleanAndHonest.orm.User;
+import com.opensymphony.xwork2.ActionContext;
 
 public class UserBizImpl implements UserBiz {
 	BaseDAO<User> baseDAO;
@@ -25,8 +26,8 @@ public class UserBizImpl implements UserBiz {
 		if(list.size() > 0){
 			ServletActionContext.getRequest().getSession().setAttribute("uName", list.get(0).getUname());
 			ServletActionContext.getRequest().getSession().setAttribute("uOffi", list.get(0).getOffice());
-			/*ActionContext.getContext().put("uname", list.get(0));
-			ActionContext.getContext().put("uoffi", "qweqewqweq");*/
+			ActionContext.getContext().getSession().put("user", list.get(0));
+			/*ActionContext.getContext().put("uoffi", "qweqewqweq");*/
 			flag = true;
 		}
 		
