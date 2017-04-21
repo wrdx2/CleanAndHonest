@@ -30,7 +30,7 @@ public class LanmuBizImpl implements LanmuBiz {
 	}
 
 	@Override
-	public boolean deleteLm(String id) {
+	public boolean deleteLms(String id) {
 		// TODO Auto-generated method stub
 		boolean flag = false;
 		int i = Integer.valueOf(id).intValue();
@@ -41,7 +41,15 @@ public class LanmuBizImpl implements LanmuBiz {
 		return flag;
 	}
 
+	@Override
+	public void renameLms(Lanmu rlm) {
+		// TODO Auto-generated method stub
+		baseDAO.update(rlm);
+		
+	}
+	
 	public void setBaseDAO(BaseDAO<Lanmu> baseDAO) {
 		this.baseDAO = baseDAO;
 	}
+
 }

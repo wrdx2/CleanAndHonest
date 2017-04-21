@@ -122,13 +122,13 @@
 	
 	<!-- 文章管理 -->
 	<bean id="ArticleAction" class="com.cleanAndHonest.Action.ArticleAction" scope="prototype">
-		<!-- <property name="article" ref="Article"></property> -->
+		<property name="article" ref="Article"></property>
 		<property name="lm" ref="Lanmu"></property>
 	</bean>
 	
-	<!-- <bean id="Article" class="com.cleanAndHonest.Biz.Impl.ArticleBizImpl">
+	<bean id="Article" class="com.cleanAndHonest.Biz.Impl.ArticleBizImpl">
 		<property name="baseDAO" ref="baseDAO" ></property>
-	</bean> -->
+	</bean>
 	
 	<bean id="Lanmu" class="com.cleanAndHonest.Biz.Impl.LanmuBizImpl">
 		<property name="baseDAO" ref="baseDAO" ></property>

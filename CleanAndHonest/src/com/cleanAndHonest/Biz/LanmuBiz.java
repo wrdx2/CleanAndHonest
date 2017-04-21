@@ -23,6 +23,12 @@ public interface LanmuBiz {
 	 * @param string 栏目id
 	 * @return 成功返回true
 	 */
-	public boolean deleteLm(String string);
+	public boolean deleteLms(String string);
+
+	/**
+	 * 编辑栏目信息
+	 * @param rlm
+	 */
+	public void renameLms(Lanmu rlm);
 
 }

@@ -189,7 +189,7 @@ body {
 								src="../images/ico06.gif" width="8" height="12" />
 						</td>
 						<td width="91%">
-							<a href="${pageContext.request.contextPath}/article/addArticleAction" target="mainFrame" 
+							<a href="${pageContext.request.contextPath}/mainFrm/articleadd.jsp" target="mainFrame" 
 								class="left-font03" onClick="tupian('19');">添加文章</a>
 						</td>
 					</tr>

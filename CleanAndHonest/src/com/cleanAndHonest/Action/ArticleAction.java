@@ -6,6 +6,7 @@ import com.cleanAndHonest.Action.base.BaseAction;
 import com.cleanAndHonest.Biz.ArticleBiz;
 import com.cleanAndHonest.Biz.LanmuBiz;
 import com.cleanAndHonest.Util.Json;
+import com.cleanAndHonest.orm.Article;
 import com.cleanAndHonest.orm.Lanmu;
 import com.opensymphony.xwork2.ActionContext;
 
@@ -18,16 +19,19 @@ public class ArticleAction extends BaseAction {
 	
 	private ArticleBiz article;
 	private LanmuBiz lm;
-	private List<Lanmu> list;
-	
+	private List<Lanmu> lmList;
+	private List<Article> arList;
+	private Article ar;
+	private String stat;
+
 	/**
 	 * 查询栏目列表
 	 * @return 跳转到栏目显示页面
 	 */
 	public String lanmu(){
-		list = lm.list();
-		ActionContext.getContext().put("lanmu", list);
-		ActionContext.getContext().getSession().put("lanmu", list);
+		lmList = lm.list();
+		ActionContext.getContext().put("lanmu", lmList);
+		ActionContext.getContext().getSession().put("lanmu", lmList);
 		return "lanmu";
 	}
 	
@@ -39,10 +43,10 @@ public class ArticleAction extends BaseAction {
 	public String addlm(){
 		String lmName = request.getParameter("addlm");
 		Lanmu slm = new Lanmu();
-		list = lm.list();
+		lmList = lm.list();
 		int i;
-		if(list.size() > 0){
-			i = list.get(list.size()-1).getLno() + 1;
+		if(lmList.size() > 0){
+			i = lmList.get(lmList.size()-1).getLno() + 1;
 		}else{
 			i = 1;
 		}
@@ -62,6 +66,10 @@ public class ArticleAction extends BaseAction {
 		return null;
 	}
 	
+	/**
+	 * 删除栏目
+	 * @return ajax调用，无返回值
+	 */
 	public String deleteLm() {
 		String ids = request.getParameter("ids");
 		
@@ -69,7 +77,7 @@ public class ArticleAction extends BaseAction {
 		Json json = new Json();
 		
 		for(int i = 0 ; i < idsStr.length ; i ++){
-			if(lm.deleteLm(idsStr[i])){
+			if(lm.deleteLms(idsStr[i])){
 				json.setSuccess(true);
 				json.setMsg("删除成功");
 			}else{
@@ -79,6 +87,74 @@ public class ArticleAction extends BaseAction {
 		}
 		
 		WriteJson(json);
+		return null;
+	}
+	
+	/**
+	 * 编辑栏目
+	 * @return
+	 */
+	public String renameLm(){
+		Lanmu rlm = new Lanmu();
+		Integer lno = Integer.valueOf(request.getParameter("lmlno"));
+		String ltype = request.getParameter("lmtype").trim();
+		Integer lstate1 = Integer.valueOf(request.getParameter("auditing"));
+		
+		rlm.setLno(lno);
+		rlm.setLtype(ltype);
+		if (lstate1 == 0) {
+			rlm.setLstate(lstate1);
+		}else{
+			Integer lstate2 = Integer.valueOf(request.getParameter("lmDisplay"));
+			System.out.println("栏目状态值：" + lstate2);
+			rlm.setLstate(lstate2);
+		}
+		
+		lm.renameLms(rlm);
+		return "renameLm";
+	}
+	
+	public String selectLm(){
+		lmList = lm.list();
+		
+		Json json = new Json();
+		
+		if(lmList.size() > 0){
+			json.setSuccess(true);
+			json.setObj(lmList);
+			json.setMsg("查询到栏目值");
+		}else{
+			json.setSuccess(false);
+			json.setMsg("查询失败");
+		}
+		
+		WriteJson(json);
+		
+		return null;
+	}
+	
+	/**
+	 * 查看所有文章
+	 * @return 文章列表
+	 */
+	public String list(){
+		arList = article.list();
+		ActionContext.getContext().put("article", arList);
+		ActionContext.getContext().getSession().put("article", arList);
+		
+		return "arList";
+	}
+	
+	public String look(){
+		String xxano = request.getParameter("ano");
+		ar = article.xxArticle(Integer.valueOf(xxano));
+		stat = "look";
+		return "look";
+	}
+	
+	public String edit(){
+		
+		
 		return null;
 	}
 	
@@ -96,12 +172,36 @@ public class ArticleAction extends BaseAction {
 		this.lm = lm;
 	}
 
-	public List<Lanmu> getList() {
-		return list;
+	public List<Lanmu> getLmList() {
+		return lmList;
 	}
 
-	public void setList(List<Lanmu> list) {
-		this.list = list;
+	public void setLmList(List<Lanmu> lmList) {
+		this.lmList = lmList;
+	}
+
+	public List<Article> getArList() {
+		return arList;
+	}
+
+	public void setArList(List<Article> arList) {
+		this.arList = arList;
+	}
+
+	public Article getAr() {
+		return ar;
+	}
+
+	public void setAr(Article ar) {
+		this.ar = ar;
+	}
+	
+	public String getStat() {
+		return stat;
+	}
+
+	public void setStat(String stat) {
+		this.stat = stat;
 	}
 
 }

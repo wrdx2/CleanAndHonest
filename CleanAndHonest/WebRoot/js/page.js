@@ -55,12 +55,13 @@ function displayPage() {
 	console.log("  begin:" + len + "   end:" + end);
 	$("#show_table tr").hide();
 	$('input:checkbox').attr('name','delid1');
+	$('input:checkbox').removeAttr('checked');
 	$("#show_table tr").each(function(i) {
 		if (i - 1 >= begin && i - 1 < end)// 显示第page页的记录
 		{
 			$("#show_table_one").show();
 			$(this).show();
-			$(this).find("input").attr("name","delid");
+			$(this).find("input:checkbox").attr("name","delid");
 			//$(this.input:checkbox).attr('name','delid');
 			document.getElementById("curPage").value = curPage;
 			document.getElementById("cpage").innerHTML = curPage;

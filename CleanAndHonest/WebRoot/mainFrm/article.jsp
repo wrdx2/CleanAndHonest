@@ -58,13 +58,12 @@ html {
 <script type="text/JavaScript" src="${pageContext.request.contextPath}/js/jquery.cookie.js"></script>
 <script type="text/JavaScript" src="${pageContext.request.contextPath}/js/page.js"></script>
 <script src="${pageContext.request.contextPath}/js/layer/layer.min.js"></script>
-<script src="${pageContext.request.contextPath}/js/lanmu.js"></script>
 <link href="../css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
 	/* function sousuo() {
 		window.open("gaojisousuo.htm","","depended=0,alwaysRaised=1,width=800,height=510,location=0,menubar=0,resizable=0,scrollbars=0,status=0,toolbar=0");
 	} */
-	pageSize2(8);
+	//pageSize2(8);
 	function selectAll() {
 		var obj = $("input:checkbox");
 		for ( var i = 0; i < obj.length; i++) {
@@ -111,7 +110,7 @@ html {
 												readonly="readonly" />
 											<span class="newfont06">至</span>
 											<input name="textfield" type="text" size="12" 
-												readonly="readonly" /> 
+												readonly="readonly" />
 											<input name="Submit4" type="button" class="right-button02" 
 												value="查 询" />
 										</td>
@@ -143,7 +142,7 @@ html {
 												<a href="#" class="right-font08" onclick="unselectAll();">反选</a>
 											</span>
 											<input name="Submit" type="button" class="right-button08" onclick="deleteLmAll();" value="删除所选栏目" /> 
-											<input name="Submit2" type="button" class="right-button08" onclick="addlmContent();" value="添加" />
+											<!-- <input name="Submit2" type="button" class="right-button08" onclick="addlmContent();" value="添加" /> -->
 										</td>
 									</tr>
 									<tr>
@@ -156,31 +155,32 @@ html {
 												</tr> -->
 												<tr id="show_table_one" bgcolor="#EEEEEE">
 													<td width="4%" align="center" height="30">选择</td>
-													<td width="10%">栏目类型</td>
-													<td width="10%">审核状态</td>
-													<td width="10%">显示状态</td>
+													<td width="10%">文章发表人</td>
+													<td width="10%">文章标题</td>
+													<td width="10%">栏目类别</td>
+													<td width="10%">发表时间</td>
 													<td width="10%">操作</td>
 												</tr>
 												
-												<s:iterator value="lanmu">
+												<s:iterator value="article">
 												<tr id="show_table tr" bgcolor="#FFFFFF">
 													<td height="20">
-													<input type="checkbox" name="delid" value=<s:property value="lno" /> />
+													<input type="checkbox" name="delid" value=<s:property value="ano" /> />
 													</td>
-												     <td><s:property value="ltype"/></td>
-												     <td><s:if test='lstate == 0'>未审核
-												     	 <td></td>
-												     	 </s:if>
-												     	 <s:elseif test='lstate == 1 '>已审核
-												     	 <td>未显示</td>
-												     	 </s:elseif>
-												     	 <s:elseif test="lstate == 2">已审核
-												     	 <td>已显示</td>
-												     	 </s:elseif>
+												     <td><s:property value="aname"/></td>
+												     <td>
+												     	 <s:property value="atitle"/>
 												     </td>
 												     <td>
-												     	<a onclick="renameLm('${lno}','${ltype}','${lstate}');" href="javascript:;">修改</a>
-													</td>
+												     	<s:property value="atype"/>
+												     </td>
+												     <td>
+												     	<s:property value="atime"/>
+												     </td>
+												   
+												     <td>
+												     	<s:a href='lookArticleAction?ano=%{ano}'>查看</s:a>
+												     </td>
 												</tr>
 												</s:iterator>
 											</table>

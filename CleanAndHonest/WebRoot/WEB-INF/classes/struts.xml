@@ -20,11 +20,23 @@
 	        </result> -->
 		</action>
 	</package>
-	
+	<!-- 文章 -->
 	<package name="article" namespace="/article" extends="struts-default">
 		<action name="*ArticleAction" class="ArticleAction" method="{1}">
+			<!-- 栏目管理 -->
 			<result name="lanmu">/mainFrm/lanmu.jsp</result>
 			<result name="view">/view.jsp</result>
+			<result name="renameLm" type="redirectAction">
+				<param name="namespace">/article</param>
+				<param name="actionName">lanmuArticleAction</param>
+			</result>
+			
+			<!-- 文章管理 -->
+			<result name="arList">/mainFrm/article.jsp</result>
+			<result name="look">
+				<param name="location">/mainFrm/articlexinxi.jsp</param>
+				<param name="stat">1</param>
+			</result>
 		</action>
 	</package>
 	
