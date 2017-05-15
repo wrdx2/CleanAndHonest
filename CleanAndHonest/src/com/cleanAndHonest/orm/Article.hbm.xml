@@ -29,7 +29,7 @@
             <column name="aContent" />
         </property>
         <property name="atime" type="java.util.Date">
-            <column name="aTime" length="10" />
+            <column name="aTime" length="16" />
         </property>
     </class>
 </hibernate-mapping>

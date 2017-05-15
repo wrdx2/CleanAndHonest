@@ -1,11 +1,22 @@
 package com.cleanAndHonest.Action;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 import com.cleanAndHonest.Action.base.BaseAction;
 import com.cleanAndHonest.Biz.ArticleBiz;
 import com.cleanAndHonest.Biz.LanmuBiz;
+import com.cleanAndHonest.Util.Constants;
+import com.cleanAndHonest.Util.DateUtil;
+import com.cleanAndHonest.Util.FileUtils;
 import com.cleanAndHonest.Util.Json;
+import com.cleanAndHonest.Util.OfficeToSwf;
 import com.cleanAndHonest.orm.Article;
 import com.cleanAndHonest.orm.Lanmu;
 import com.opensymphony.xwork2.ActionContext;
@@ -114,6 +125,10 @@ public class ArticleAction extends BaseAction {
 		return "renameLm";
 	}
 	
+	/**
+	 * 查询栏目信息
+	 * @return ajax请求 重定义返回json对象
+	 */
 	public String selectLm(){
 		lmList = lm.list();
 		
@@ -145,11 +160,58 @@ public class ArticleAction extends BaseAction {
 		return "arList";
 	}
 	
+	/**
+	 * 查看文章信息
+	 * @return 返回查看的信息“look”
+	 */
 	public String look(){
 		String xxano = request.getParameter("ano");
 		ar = article.xxArticle(Integer.valueOf(xxano));
 		stat = "look";
 		return "look";
+	}
+	
+	/**
+	 * 添加一篇文章
+	 * @return 文章列表
+	 */
+	public String add(){
+		String title = request.getParameter("title");
+		String address = request.getParameter("address");
+		String type = request.getParameter("type");
+		String text = request.getParameter("text");
+		String aname = session.getAttribute("uName").toString();
+		String fileNames = request.getParameter("fileNames");
+		
+		String[] fileName = fileNames.split(",");
+		
+		Date nowdate = new Date();
+		Timestamp st = Timestamp.valueOf(DateUtil.DateToString("yyyy-MM-dd HH:mm:ss", nowdate));
+		
+		String attach = "";
+		for (int i = 0; i < fileName.length; i++) {
+			fileName[i] = Constants.ATTACH_PATH + "article/" + DateUtil.DateToString("yyyyMMdd", nowdate) + "/" + fileName[i];
+			System.out.println("附件:" + fileName[i]);
+		}
+		for (int i = 0; i < fileName.length; i++) {
+			attach += fileName[i];
+			if(i >= 1 && i < fileName.length - 1){
+				attach += ",";
+			}
+		}
+		
+		Article ar = new Article();
+		
+		ar.setAtitle(title);
+		ar.setAaddress(address);
+		ar.setAcontent(text);
+		ar.setAtime(st);
+		ar.setAtype(type);
+		ar.setAname(aname);
+		ar.setAattach(attach);
+		
+		article.addar(ar);
+		return "add";
 	}
 	
 	public String edit(){
@@ -160,6 +222,63 @@ public class ArticleAction extends BaseAction {
 	
 	public String view(){
 		
+		String dir = request.getParameter("dir");
+		String name = request.getParameter("name");
+		
+		String localPath = "C:/software/CleanAndHonest/WebRoot/viewFileCache/";
+		File localPathFile = new File(localPath);
+		
+		if(!localPathFile.exists()){
+			//文件夹不存在，创建文件夹
+			localPathFile.mkdir();
+		}
+		
+		String swfFilePath = localPath + FileUtils.getFilePrefix(name) + ".swf";
+		File swfFile = new File(swfFilePath);
+		String finalSwfFilePath = null;
+		if(swfFile.exists()){
+			//第二次以后进行的预览
+			finalSwfFilePath = "viewFileCache/" + FileUtils.getFilePrefix(name) + ".swf";
+		}else{
+			//第一次点击预览，把文件下载到localPath并把文件转化为SWF文件
+			/*serContext.getResourceAsStream( dir + "/" + name);*/
+			// 下载本地文件
+	        String fileName = "Operator.doc".toString(); // 文件的默认保存名
+	        // 读到流中
+	        InputStream inStream = null;
+			try {
+				System.out.println(dir + name);
+				inStream = new FileInputStream(dir + name);
+			} catch (FileNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+	        // 设置输出的格式
+	        response.reset();
+	        response.setContentType("bin");
+	        response.addHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\"");
+	        // 循环取出流中的数据
+	        byte[] b = new byte[100];
+	        int len;
+	        try {
+	            while ((len = inStream.read(b)) > 0)
+	                response.getOutputStream().write(b, 0, len);
+	            inStream.close();
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+	        
+			String pdfFilePath = FileUtils.getFilePrefix(name) + ".pdf";
+			File pdfFile = new File(pdfFilePath);
+			if(!pdfFile.exists()){
+				OfficeToSwf.convert2PDF(localPath + name);
+			}else{
+				OfficeToSwf.pdftoswf(pdfFilePath);
+			}
+			finalSwfFilePath = "viewFileCache/" + FileUtils.getFilePrefix(name) + ".swf";
+		}
+		
+		ActionContext.getContext().put("local", finalSwfFilePath);
 		
 		return "view";
 	}

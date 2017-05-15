@@ -19,4 +19,10 @@ public interface ArticleBiz {
 	 */
 	Article xxArticle(Integer ano);
 
+	/**
+	 * 添加一篇文章
+	 * @param ar 所要添加的文章信息
+	 */
+	void addar(Article ar);
+
 }

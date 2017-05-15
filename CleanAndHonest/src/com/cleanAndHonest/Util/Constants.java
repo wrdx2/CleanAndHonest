@@ -7,5 +7,6 @@ public class Constants {
 	
 	public static String PDF2SWF = "C:/OnLine/SWFTools/pdf2swf.exe";
 	public static String OPENOFFICE = "C:/Program Files (x86)/OpenOffice 4";
+	public static String ATTACH_PATH = "C:/Java/Tomcat7.0/webapps/CleanAndHonest/attach/";
 	
 }

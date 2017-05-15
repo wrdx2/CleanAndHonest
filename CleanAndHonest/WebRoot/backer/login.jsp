@@ -113,7 +113,7 @@ function checfm(){
 							<td height="35" class="login-text02">验证图片：<br />
 							</td>
 							<td><img id="checkCode" onclick="change();"
-								src="${pageContext.request.contextPath}/images/pic05.gif" width="109" height="30" title='' /> 
+								src="" width="109" height="30" title='' /> 
 								<!-- <a href="./../changeCheckCode" class="login-text03">
 								看不清楚，换张图片</a> -->
 								

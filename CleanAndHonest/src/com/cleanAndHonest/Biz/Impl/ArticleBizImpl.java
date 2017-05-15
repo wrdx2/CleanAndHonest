@@ -30,4 +30,10 @@ public class ArticleBizImpl implements ArticleBiz {
 		return baseDAO.get(Article.class, ano);
 	}
 
+	@Override
+	public void addar(Article ar) {
+		// TODO Auto-generated method stub
+		baseDAO.save(ar);
+	}
+
 }

@@ -14,10 +14,18 @@
 		</action>
 		<!-- 验证码 -->
 		<action name="changeCheckCode" class="com.cleanAndHonest.Action.changeCheck">
-			<!-- <result type="stream">
-				<param name="contentType">image/jpeg</param>
-		        <param name="inputName">inputStream</param>
-	        </result> -->
+		</action>
+		<!-- 文件上传下载 -->
+		<action name="UploadAction" class="com.cleanAndHonest.Action.UploadAction" method="Upload">
+			<result name="Upsuccess" type="redirect">/mainFrm/articleadd.jsp
+			</result>
+		</action>
+		<action name="DownLoadAction" class="com.cleanAndHonest.Action.DownLoadAction">
+				<result name="success" type="stream">
+					<param name="contentType">application/octet-stream</param>
+					<param name="contentDisposition">attachment;fileName="${fileName}"</param>
+					<param name="inputName">inputStream</param>
+				</result>
 		</action>
 	</package>
 	<!-- 文章 -->
@@ -36,6 +44,10 @@
 			<result name="look">
 				<param name="location">/mainFrm/articlexinxi.jsp</param>
 				<param name="stat">1</param>
+			</result>
+			<result name="add" type="redirectAction">
+				<param name="namespace">/article</param>
+				<param name="actionName">listArticleAction</param>
 			</result>
 		</action>
 	</package>

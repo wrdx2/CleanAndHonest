@@ -31,6 +31,7 @@ public class UserAction extends BaseAction {
 		
 		if(userBiz.login(man)){
 			//session.put("user", loginName);
+			//session.setAttribute("user", man);
 			return "loginSuccess";
 		} else {
 			return "loginError";

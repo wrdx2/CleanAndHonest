@@ -2,6 +2,7 @@ package com.cleanAndHonest.Action.base;
 
 import java.io.PrintWriter;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -20,6 +21,7 @@ public class BaseAction extends ActionSupport {
 	
 	public HttpServletRequest request = ServletActionContext.getRequest();
 	public HttpServletResponse response = ServletActionContext.getResponse();
+	public ServletContext serContext = ServletActionContext.getServletContext();
 	public HttpSession session = request.getSession();
 	
 	public void WriteJson(Object obj){

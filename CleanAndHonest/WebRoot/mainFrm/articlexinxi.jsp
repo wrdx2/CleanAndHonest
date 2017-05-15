@@ -9,7 +9,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<title>审批详细信息</title>
+<title>文章详细信息</title>
 <style type="text/css">
 <!--
 body {
@@ -64,13 +64,20 @@ html {
 <link href="../css/css.css" rel="stylesheet" type="text/css" />
 <link href="../css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/JavaScript">
-function viewName(){
+function viewName(file){
+	var arr = file.split('/');
+	
+	var filename = arr[arr.length-1];
+	var dir = "";
+	for(var i = 0;i <= arr.length - 2;i++){
+		dir += arr[i] + '/';
+	}
 	$.layer({
 	    type: 2,
 	    border: [0],
 	    title: false,
 	    closeBtn: [0, true],
-	    iframe: {src : '../article/viewArticleAction'},
+	    iframe: {src : '../article/viewArticleAction?dir=' + dir + '&name='+filename},
 	    area: ['950px', '500px']
 	});
 }
@@ -221,7 +228,7 @@ function viewName(){
 													<s:a href="%{url}">
 														<s:property value='sr.aattach'/>
 													</s:a> --%>
-													<a id="url" onclick="viewName();"><s:property value='ar.aattach'/>
+													<a id="view" onclick="viewName('${ar.aattach}');"><s:property value='ar.aattach'/>
 													</a>
 													<!-- 附件的下载 -->
 													<s:url id="url" action="../DownLoadAction">
