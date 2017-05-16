@@ -72,6 +72,16 @@ function viewName(file){
 	for(var i = 0;i <= arr.length - 2;i++){
 		dir += arr[i] + '/';
 	}
+	var fileDir = "";
+	for(var i = 5 ; i <= arr.length-1 ; i++){
+		if(i<=arr.length-2){
+			fileDir += arr[i] + '/' ;
+		}else{
+			fileDir += arr[i];
+		}
+		
+	}
+	
 	$.layer({
 	    type: 2,
 	    border: [0],
@@ -80,6 +90,41 @@ function viewName(file){
 	    iframe: {src : '../article/viewArticleAction?dir=' + dir + '&name='+filename},
 	    area: ['950px', '500px']
 	});
+};
+
+function downloadFile(file){
+	var arr = file.split('/');
+	var filename = arr[arr.length-1];
+	var fileDir = "";
+	for(var i = 5 ; i <= arr.length-1 ; i++){
+		if(i<=arr.length-2){
+			fileDir += arr[i] + '/' ;
+		}else{
+			fileDir += arr[i];
+		}
+	}
+	
+	window.location.href="../DownLoadAction?fileName=" + fileDir + "&name=" + filename;
+	
+	/* $.ajax({
+		type : "post",
+		secureuri : false,
+		//url : "../DownloadAction?fileName=" + filename,
+		url : "../DownLoadAction",
+		data : {
+			name : "WRD",
+			dir : "viewFileCache/" + filename,
+			fileName : fileDir
+		}
+		/*, success : function(data, status) {
+			console.log(data + status);
+			alert(data);
+		},
+		error : function(data, status, e) {
+			console.log(data);
+			alert(e);
+		} 
+	}); */
 }
 </script>
 
@@ -231,14 +276,16 @@ function viewName(file){
 													<a id="view" onclick="viewName('${ar.aattach}');"><s:property value='ar.aattach'/>
 													</a>
 													<!-- 附件的下载 -->
-													<s:url id="url" action="../DownLoadAction">
+													<%-- <s:url id="url" action="../DownLoadAction">
 														<s:param name="fileName">
 															<s:property value='ar.aattach'/>
 														</s:param>
 													</s:url>
 													<s:a href="%{url}">
 														下载
-													</s:a>
+													</s:a> --%>
+													<a id="downloadFile" onclick="downloadFile('${ar.aattach}');">下载
+													</a>
 												</td>
 											</tr>
 											<tr>

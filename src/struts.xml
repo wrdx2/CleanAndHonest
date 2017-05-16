@@ -21,10 +21,10 @@
 			</result>
 		</action>
 		<action name="DownLoadAction" class="com.cleanAndHonest.Action.DownLoadAction">
-				<result name="success" type="stream">
-					<param name="contentType">application/octet-stream</param>
-					<param name="contentDisposition">attachment;fileName="${fileName}"</param>
-					<param name="inputName">inputStream</param>
+				<result name="downloadSuccess" type="stream">
+					<param name="contentType">application/octet-stream;charset=ISO8859-1</param>
+					<param name="inputName">inStream</param>
+					<param name="contentDisposition">attachment;filename=${name}</param>
 				</result>
 		</action>
 	</package>
