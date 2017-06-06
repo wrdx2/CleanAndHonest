@@ -1,0 +1,186 @@
+﻿<?php session_start();
+$SESSION["username"]=$_REQUEST['userid'];
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>石家庄铁道大学校园网计费网关</title>
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" --><!-- TemplateEndEditable -->
+<style type="text/css"> 
+<!-- 
+body  {
+	font: 100% Verdana, Arial, Helvetica, sans-serif;
+	background: #666666;
+	margin: 0; /* 最好将 body 元素的边距和填充设置为 0 以覆盖不同的浏览器默认值 */
+	padding: 0;
+	text-align: center; /* 在 IE 5* 浏览器中，这会将容器居中。文本随后将在 #container 选择器中设置为默认左对齐 */
+	color: #000000;
+}
+.twoColHybLtHdr #container { 
+	width: 80%;  /* 这将创建一个占据 80% 浏览器宽度的容器 */
+	background: #FFFFFF;
+	margin: 0 auto; /* 自动边距（与宽度一起）会将页面居中 */
+	border: 1px solid #000000;
+	text-align: left; /* 这将覆盖 body 元素上的“text-align: center”。 */
+} 
+.twoColHybLtHdr #header { 
+	background: #DDDDDD; 
+	padding: 0 10px;  /* 此填充会将出现在它后面的 div 中的元素左对齐。如果 #header 中使用的是图像（而不是文本），您最好删除填充。 */
+} 
+.twoColHybLtHdr #header h1 {
+	margin: 0; /* 将 #header div 中最后一个元素的边距设置为零将避免边距重叠（即 div 之间出现的无法解释的空白）。如果 div 周围有边框，则不必将边距设置为零，因为边框也会避免边距重叠 */
+	padding: 10px 0; /* 使用填充而不使用边距将可以使元素远离 div 的边缘 */
+}
+
+/* sidebar1 提示：
+1. 由于我们使用的是相对单位，因此最好不要在侧栏中使用填充。它将会增加符合标准的浏览器的总宽，并产生未知的实际宽度。 
+2. 由于 sidebar 值以全方 (em) 为单位，请记住侧栏的宽度将随不同的默认文本大小而变化。
+3. 如果为 div 中的元素设置左边距和右边距，则会在 div 边缘和这些元素之间产生空白，如“.twoColHybLtHdr #sidebar1 p”规则中所示。
+*/
+.twoColHybLtHdr #sidebar1 {
+	float: left; 
+	width: 12em; /* 由于此元素是浮动的，因此必须指定宽度 */
+	background: #EBEBEB; /* 将显示背景色，其宽度等于栏中内容的长度，*/
+	padding: 15px 0; /* 顶部和底部的填充将在该 div 中产生视觉空间 */
+}
+.twoColHybLtHdr #sidebar1 h3, .twoColHybLtHdr #sidebar1 p {
+	margin-left: 10px; /* 对于将要放在侧栏中的每个元素，都应当设置左边距和右边距 */
+	margin-right: 10px;
+}
+
+/* mainContent 提示：
+1. mainContent 和 sidebar1 之间的空白是由 mainContent div 的左边距创建的。无论 sidebar1 div 中包含多少内容，都将保留栏空白。如果您希望在 #sidebar1 中的内容结束时，用 #mainContent div 的文本填充 #sidebar1 空白，则可以删除此左边距。
+2. 请记住，如果在 mainContent div 中放置了过宽的元素，则有可能会导致“浮动下降”（即，侧栏下面非浮动的 mainContent 区域下降）。对于混合布局（总宽基于百分比，侧栏基于全方 (em)），则可能无法计算确切的可用宽度。如果用户的文本大小大于平均值，则侧栏 div 将更宽，因此，mainContent div 中的空间将更小。您应当注意到这种限制，当客户端使用 Contribute 添加内容时尤其如此。
+3. 在下面的 Internet Explorer 条件注释中，zoom 属性用来赋予 mainContent“hasLayout”。这可能会有助于避免若干特定于 IE 的错误。
+*/
+.twoColHybLtHdr #mainContent { 
+	margin: 0 20px 0 13em; /* 右边距可以用百分比或像素来指定，它会在页面的右下方产生空白。 */
+} 
+.twoColHybLtHdr #footer { 
+	padding: 0 10px; /* 此填充会将它上面 div 中的所有元素左对齐。 */
+	background:#DDDDDD;
+} 
+.twoColHybLtHdr #footer p {
+	margin: 0; /* 将脚注中第一个元素的边距设置为零将避免出现可能的边距重叠（即 div 之间出现的空白）*/
+	padding: 10px 0; /* 就像边距会产生空白一样，此元素上的填充也将产生空白，但不会出现边距重叠问题 */
+}
+
+/* 要重用的各种类 */
+.fltrt { /* 此类可用来使页面中的元素向右浮动。浮动元素必须位于页面上要与之相邻的元素之前。 */
+	float: right;
+	margin-left: 8px;
+}
+.fltlft { /* 此类可用来使页面上的元素向左浮动 */
+	float: left;
+	margin-right: 8px;
+}
+.clearfloat { /* 此类应当放在 div 或 break 元素上，而且该元素应当是完全包含浮动的容器关闭之前的最后一个元素 */
+	clear:both;
+    height:0;
+    font-size: 1px;
+    line-height: 0px;
+}
+.STYLE12 {color: #FF0000}
+.STYLE14 {	font-size: 18px;
+	font-weight: bold;
+}
+.p9 {font-size: 9pt}
+.STYLE11 {
+	font-size: 16px;
+	font-weight: bold;
+	color: #FF0000;
+}
+.STYLE13 {color: #000000}
+.STYLE15 {font-size: 16px; font-weight: bold; }
+.STYLE16 {font-size: 24px; font-weight: bold; }
+.STYLE18 {
+	font-size: 36px;
+	font-weight: bold;
+	color: #FF0000;
+}
+--> 
+</style><!--[if IE]>
+<style type="text/css"> 
+/* 请将所有版本的 IE 的 css 修复放在这个条件注释中 */
+.twoColHybLtHdr #sidebar1 { padding-top: 30px; }
+.twoColHybLtHdr #mainContent { zoom: 1; padding-top: 15px; }
+/* 上面的专用 zoom 属性为 IE 提供为避免几个错误而可能需要的 hasLayout */
+</style>
+<![endif]--></head>
+
+<body class="twoColHybLtHdr">
+
+<div id="container">
+  <div id="header">
+<h1><img src="./logo.png" width="942" height="82" /></h1>
+  <!-- end #header --></div>
+  <div id="sidebar1">
+<form action="/passwd.magi" method="POST" onSubmit="setMD5Passwd(this)">
+    <table align="center" class='p9'>
+      <tr>
+        <td align="right"><img src="./logo.gif" alt="" width="30" height="30" /></td>
+        <td align="center"><b><font color="red" size="3" class="p9">欢迎使用校园网</font></b></td>
+      </tr>
+      <tr>
+        <td align="right"><font color="red">帐号: </font></td>
+        <td><input type="text" name="userid" size="16" value="" /></td>
+      </tr>
+      <tr>
+        <td align="right"><font color="red">密码: </font></td>
+        <td><input type="password" name="passwd" size="16" value="" /></td>
+      </tr>
+      <tr>
+        <td align="right" height="22"><font color="red">服务: </font></td>
+        <td height="22"><input type="hidden" name="chap" value="0" />
+          <select name="serivce" >
+            <option value="internet" >internet </option >
+          </select ></td>
+      </tr>
+      <tr>
+        <td align="right" colspan="2">&nbsp;
+          <div align="center">
+            <input type="hidden" name="random" size="50" value="internet" />
+            <input type="submit" name="login" value="登录" />
+          </div></td>
+      </tr>
+    </table>
+    </form>
+    <p>
+      <!-- end #sidebar1 -->
+</p>
+<p>网络中心:(879)35446</p>
+<p><span class="STYLE14" style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; WORD-SPACING: 0px; LINE-HEIGHT: 200%"><strong><a href="http://info.stdu.edu.cn">校园网自助服务平台</a></strong></span></p>
+<p><span class="STYLE14" style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; WORD-SPACING: 0px; LINE-HEIGHT: 200%"><strong><a href="http://www.stdu.edu.cn">石家庄铁道大学</a></strong></span></p>
+<p><span class="STYLE14" style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; WORD-SPACING: 0px; LINE-HEIGHT: 200%"><strong><a href="http://gw.stdu.edu.cn">校园网计费网关</a></strong></span></p>
+<p><span class="STYLE14" style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; WORD-SPACING: 0px; LINE-HEIGHT: 200%"><strong><a href="ftp://ftp.stdu.edu.cn/public/">免费资源共享</a></strong></span></p>
+  </div>
+  <div id="mainContent">
+    <p class="STYLE18" style="margin-bottom: 0px">强烈建议大家使用客户端登录校园网 </p>
+    <p class="STYLE16" style="margin-bottom: 0px">注意事项：</p>
+    <p class="STYLE14" 
+      style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; WORD-SPACING: 0px; LINE-HEIGHT: 200%">1.<span class="STYLE14" style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; WORD-SPACING: 0px; LINE-HEIGHT: 200%">在&ldquo;帐号&rdquo;中输入用户帐号，在&ldquo;密码&rdquo;栏中输入密码,点击登录即可. </span></p>
+    <p class="STYLE14" 
+      style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; WORD-SPACING: 0px; LINE-HEIGHT: 200%">2.<a href="http://info.stdu.edu.cn/index.php/download/20-stdu-windows8">客户端下载</a></p>
+    <p class="STYLE14" 
+      style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; WORD-SPACING: 0px; LINE-HEIGHT: 200%">3.<strong><a href="http://info.stdu.edu.cn">校园网自助服务平台</a><br/>新开户、查询IP地址、自助漫游等。</strong><br />
+<p class="STYLE14" 
+      style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; WORD-SPACING: 0px; LINE-HEIGHT: 200%">4.<a href="http://info.stdu.edu.cn/index.php/help/69-2016-09-01-00-19-15">如何查询流量使用情况</a></p>
+	  <p class="STYLE14" 
+      style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; WORD-SPACING: 0px; LINE-HEIGHT: 200%">5.<a href="http://info.stdu.edu.cn/index.php/help/70-2016-09-01-00-22-23">套餐剩余流量为零后，如何继续使用校园网络</a></p>
+	  <p class="STYLE14" 
+      style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; WORD-SPACING: 0px; LINE-HEIGHT: 200%">6.<a href="http://info.stdu.edu.cn/index.php/common-problem">常见网络故障及处理</a></p>
+    <p class="STYLE14" 
+      style="MARGIN-TOP: 0px; WORD-SPACING: 0px; LINE-HEIGHT: 200%">7.<a href="http://info.stdu.edu.cn/index.php/developlog">校园网wifi使用帮助</a></p>
+    <h1>&nbsp;</h1>
+  <!-- end #mainContent --></div>
+	<!-- 这个用于清除浮动的元素应当紧跟 #mainContent div 之后，以便强制 #container div 包含所有的子浮动 -->
+	<br class="clearfloat" />
+	<div id="footer">
+<p align="center">石家庄铁道大学现代教育技术中心</p>
+  <!-- end #footer --></div>
+<!-- end #container --></div>
+</body>
+</html>

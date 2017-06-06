@@ -1,6 +1,6 @@
 package com.cleanAndHonest.orm;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 /**
  * Article entity. @author MyEclipse Persistence Tools
@@ -10,10 +10,6 @@ public class Article implements java.io.Serializable {
 
 	// Fields
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	private Integer ano;
 	private String aname;
 	private String atype;
@@ -21,7 +17,9 @@ public class Article implements java.io.Serializable {
 	private String atitle;
 	private String aattach;
 	private String acontent;
-	private Date atime;
+	private Timestamp atime;
+	private Integer ahits;
+	private String adep;
 
 	// Constructors
 
@@ -30,14 +28,16 @@ public class Article implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public Article(String atype, String atitle) {
+	public Article(String atype, String atitle, Integer ahits) {
 		this.atype = atype;
 		this.atitle = atitle;
+		this.ahits = ahits;
 	}
 
 	/** full constructor */
 	public Article(String aname, String atype, String aaddress, String atitle,
-			String aattach, String acontent, Date atime) {
+			String aattach, String acontent, Timestamp atime, Integer ahits,
+			String adep) {
 		this.aname = aname;
 		this.atype = atype;
 		this.aaddress = aaddress;
@@ -45,6 +45,8 @@ public class Article implements java.io.Serializable {
 		this.aattach = aattach;
 		this.acontent = acontent;
 		this.atime = atime;
+		this.ahits = ahits;
+		this.adep = adep;
 	}
 
 	// Property accessors
@@ -105,12 +107,28 @@ public class Article implements java.io.Serializable {
 		this.acontent = acontent;
 	}
 
-	public Date getAtime() {
+	public Timestamp getAtime() {
 		return this.atime;
 	}
 
-	public void setAtime(Date atime) {
+	public void setAtime(Timestamp atime) {
 		this.atime = atime;
+	}
+
+	public Integer getAhits() {
+		return this.ahits;
+	}
+
+	public void setAhits(Integer ahits) {
+		this.ahits = ahits;
+	}
+
+	public String getAdep() {
+		return this.adep;
+	}
+
+	public void setAdep(String adep) {
+		this.adep = adep;
 	}
 
 }

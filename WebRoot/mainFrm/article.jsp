@@ -7,7 +7,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>栏目管理</title>
+<title>查看文章</title>
 <style type="text/css">
 body {
 	margin-left: 0px;
@@ -58,6 +58,7 @@ html {
 <script type="text/JavaScript" src="${pageContext.request.contextPath}/js/jquery.cookie.js"></script>
 <script type="text/JavaScript" src="${pageContext.request.contextPath}/js/page.js"></script>
 <script src="${pageContext.request.contextPath}/js/layer/layer.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/lanmu.js"></script>
 <link href="../css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
 	/* function sousuo() {
@@ -84,12 +85,48 @@ html {
 			}
 		}
 	}
+	
+	function deleteArAll(){
+	var ids = [];
+	$("#show_table input[type=checkbox]").each(function(){
+	if(this.checked == true && this.name == 'delid'){
+		ids.push(this.value);
+	}
+	});
+	console.log(ids);
+	if(ids.length>0){
+		layer.confirm('删除提醒',function(index){
+			$.post('${pageContext.request.contextPath}/article/deleteArArticleAction', {ids:ids.join(',')}, function(j) {
+			if (j.success) {
+				location.reload();
+			}else{
+				alert(json.msg);
+			}
+		}, 'json');
+	});
+	}else{
+		layer.msg('你没有选择', 2, -1);
+	}
+}
+	
+	function xianshi(){
+		console.log($("#isEdit").val());
+		if($("#isEdit").val() != "T"){
+			$("a").each(function(i){
+				if($(this).attr("id") == "but_edit"){
+					$(this).hide();
+				}
+			});
+			$("#ar_Select").hide();
+		}
+	}
 </script>
 </head>
 
 
-<body>
+<body onload="xianshi()">
 	<!-- <form name="fom" id="fom" method="post" action=""></form> -->
+	<input type="hidden" id="isEdit" value="<s:property value='%{#session.isEdit}'/>" />
 		<table width="100%" border="0" cellspacing="0" cellpadding="0">
 
 			<tr>
@@ -135,13 +172,13 @@ html {
 							<td>
 								<table width="95%" border="0" align="center"
 									cellpadding="0" cellspacing="0">
-									<tr>
+									<tr id="ar_Select">
 										<td height="20">
 											<span class="newfont07">选择：
 												<a href="#" class="right-font08" onclick="selectAll();">全选</a> -
 												<a href="#" class="right-font08" onclick="unselectAll();">反选</a>
 											</span>
-											<input name="Submit" type="button" class="right-button08" onclick="deleteLmAll();" value="删除所选栏目" /> 
+											<input name="Submit" type="button" class="right-button08" onclick="deleteArAll();" value="删除所选文章" /> 
 											<!-- <input name="Submit2" type="button" class="right-button08" onclick="addlmContent();" value="添加" /> -->
 										</td>
 									</tr>
@@ -149,10 +186,6 @@ html {
 										<td height="40" class="font42">
 											<table id="show_table" width="100%" border="0" cellpadding="4"
 												cellspacing="1" bgcolor="#464646" class="newfont03">
-												<!-- <tr class="CTitle">
-													<td height="22" colspan="7" align="center"
-														style="font-size:16px">审批事项详细列表</td>
-												</tr> -->
 												<tr id="show_table_one" bgcolor="#EEEEEE">
 													<td width="4%" align="center" height="30">选择</td>
 													<td width="10%">文章发表人</td>
@@ -162,7 +195,7 @@ html {
 													<td width="10%">操作</td>
 												</tr>
 												
-												<s:iterator value="article">
+												<s:iterator value="arList">
 												<tr id="show_table tr" bgcolor="#FFFFFF">
 													<td height="20">
 													<input type="checkbox" name="delid" value=<s:property value="ano" /> />
@@ -179,7 +212,8 @@ html {
 												     </td>
 												   
 												     <td>
-												     	<s:a href='lookArticleAction?ano=%{ano}'>查看</s:a>
+												     	<s:a href='lookArticleAction?ano=%{ano}'>查看</s:a>&nbsp;
+												     	<s:a id="but_edit" href='editArticleAction?ano=%{ano}'>编辑</s:a>
 												     </td>
 												</tr>
 												</s:iterator>

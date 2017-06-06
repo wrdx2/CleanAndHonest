@@ -7,6 +7,8 @@ public class Json{
 	private String msg = "";
 
 	private Object obj = null;
+	
+	private Object obj2 = null;
 
 	public boolean isSuccess() {
 		return success;
@@ -30,6 +32,14 @@ public class Json{
 
 	public void setObj(Object obj) {
 		this.obj = obj;
+	}
+
+	public Object getObj2() {
+		return obj2;
+	}
+
+	public void setObj2(Object obj2) {
+		this.obj2 = obj2;
 	}
 
 }

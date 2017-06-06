@@ -1,6 +1,6 @@
 package com.cleanAndHonest.orm;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 /**
  * VSrId entity. @author MyEclipse Persistence Tools
@@ -22,7 +22,7 @@ public class VSr implements java.io.Serializable {
 	private String saddress;
 	private String stitle;
 	private String scontent;
-	private Date stime;
+	private Timestamp stime;
 	private String sattach;
 	private Integer sstate;
 	private String spass;
@@ -30,7 +30,7 @@ public class VSr implements java.io.Serializable {
 	private String remail;
 	private Integer rtel;
 	private String rcontent;
-	private Date rtime;
+	private Timestamp rtime;
 
 	// Constructors
 
@@ -41,7 +41,7 @@ public class VSr implements java.io.Serializable {
 	/** minimal constructor */
 	public VSr(Integer sno, String sname, String sdep, String semail,
 			Integer stel, String saddress, String stitle, String scontent,
-			Date stime, String sattach, Integer sstate, String spass,
+			Timestamp stime, String sattach, Integer sstate, String spass,
 			String rname, String remail, String rcontent) {
 		this.sno = sno;
 		this.sname = sname;
@@ -63,9 +63,9 @@ public class VSr implements java.io.Serializable {
 	/** full constructor */
 	public VSr(Integer sno, String sname, String sdep, String semail,
 			Integer stel, String saddress, String stitle, String scontent,
-			Date stime, String sattach, Integer sstate, String spass,
+			Timestamp stime, String sattach, Integer sstate, String spass,
 			String rname, String remail, Integer rtel, String rcontent,
-			Date rtime) {
+			Timestamp rtime) {
 		this.sno = sno;
 		this.sname = sname;
 		this.sdep = sdep;
@@ -151,11 +151,11 @@ public class VSr implements java.io.Serializable {
 		this.scontent = scontent;
 	}
 
-	public Date getStime() {
+	public Timestamp getStime() {
 		return this.stime;
 	}
 
-	public void setStime(Date stime) {
+	public void setStime(Timestamp stime) {
 		this.stime = stime;
 	}
 
@@ -215,11 +215,11 @@ public class VSr implements java.io.Serializable {
 		this.rcontent = rcontent;
 	}
 
-	public Date getRtime() {
+	public Timestamp getRtime() {
 		return this.rtime;
 	}
 
-	public void setRtime(Date rtime) {
+	public void setRtime(Timestamp rtime) {
 		this.rtime = rtime;
 	}
 

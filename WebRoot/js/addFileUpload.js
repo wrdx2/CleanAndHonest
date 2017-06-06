@@ -57,35 +57,6 @@ function ajaxUpload() {
 	return true;
 }
 
-function sub() {
-	var text = window.frames["text"].document.getElementById("textarea").value;
-	document.getElementById("text").value = text;
-	var flag = true;
-	$("input").each(
-			function() {
-				if ($(this).attr("name") == "title" || $(this).attr("name") == "text") {
-					if ($(this).val() == "") {
-						flag = false;
-					}
-				}
-			});
-	if (flag) {
-		var f = ajaxUpload();
-		if(f){
-			var names = [];
-		   $(":file").each(function(){
-			   if($(this).val() != "" && $(this).attr("id").length <= 6){
-				   names.push($(this).prop("files")[0].name);
-				}
-		   });
-		   $("#files").val(names);
-		   document.forms[0].submit();
-		}
-	} else {
-		alert("请填写完整信息！");
-	}
-}
-
 function loadSelect() {
 	var data = "";
 	var optionStr = "";
@@ -100,7 +71,14 @@ function loadSelect() {
 					if (json.obj[i].lstate == 2) {
 						optionStr += "<option value=\""
 								+ json.obj[i].lno + "\" >"
-								+ json.obj[i].ltype + "</option>";
+								+ json.obj[i].ltype ;
+						if(json.obj[i].ltype2 != null){
+							optionStr += ">>" + json.obj[i].ltype2;
+							if(json.obj[i].ltype3 != null){
+								optionStr += ">>" + json.obj[i].ltype3;
+							}
+						}
+						optionStr += "</option>";
 					}
 				}
 				for ( var i = 0; i < json.obj.length; i++) {
@@ -108,7 +86,15 @@ function loadSelect() {
 						optionStr += "<option style= 'color:#9C9900' value=\""
 								+ json.obj[i].lno
 								+ "\" >"
-								+ json.obj[i].ltype + "</option>";
+								+ json.obj[i].ltype;
+						if(json.obj[i].ltype2 != null){
+							optionStr += ">>" + json.obj[i].ltype2;
+							if(json.obj[i].ltype3 != null){
+								optionStr += ">>" + json.obj[i].ltype3;
+							}
+						}
+						optionStr += "</option>";
+
 					}
 				}
 				$("#type").html(optionStr);

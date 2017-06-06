@@ -10,6 +10,10 @@ public class LanmuBizImpl implements LanmuBiz {
 	
 	BaseDAO<Lanmu> baseDAO;
 
+	public void setBaseDAO(BaseDAO<Lanmu> baseDAO) {
+		this.baseDAO = baseDAO;
+	}
+	
 	@Override
 	public List<Lanmu> list() {
 		// TODO Auto-generated method stub
@@ -47,9 +51,41 @@ public class LanmuBizImpl implements LanmuBiz {
 		baseDAO.update(rlm);
 		
 	}
-	
-	public void setBaseDAO(BaseDAO<Lanmu> baseDAO) {
-		this.baseDAO = baseDAO;
+
+	@Override
+	public List<Lanmu> typeList(String type, String cont) {
+		// TODO Auto-generated method stub
+		if("1".equals(type)){
+			return baseDAO.find("from Lanmu where ltype = '" + cont + "' and ltype2<>null and ltype3=null");
+		}else if ("2".equals(type)) {
+			return baseDAO.find("from Lanmu where ltype2 = '" + cont + "' and ltype3<>null");
+		}else {
+			return baseDAO.find("from Lanmu where ltype3 = '" + cont + "' and ltype=null");
+		}
+	}
+
+	@Override
+	public List<Lanmu> lmtypeArList(String type, String cont) {
+		// TODO Auto-generated method stub
+		if("1".equals(type)){
+			return baseDAO.find("from Lanmu where ltype = '" + cont + "'");
+		}else if ("2".equals(type)) {
+			return baseDAO.find("from Lanmu where ltype2 = '" + cont + "'");
+		}else {
+			return baseDAO.find("from Lanmu where ltype3 = '" + cont + "'");
+		}
+	}
+
+	@Override
+	public Lanmu xxLanmu(Integer lno) {
+		// TODO Auto-generated method stub
+		return baseDAO.get(Lanmu.class, lno);
+	}
+
+	@Override
+	public List<Lanmu> disList() {
+		// TODO Auto-generated method stub
+		return baseDAO.find("from Lanmu where lstate = 2");
 	}
 
 }

@@ -199,7 +199,7 @@ body {
 								src="${pageContext.request.contextPath}/images/ico06.gif" width="8" height="12" />
 						</td>
 						<td width="91%">
-							<a href="${pageContext.request.contextPath}/article/mytxtArticleAction" target="mainFrame"
+							<a href="${pageContext.request.contextPath}/article/mytxtArticleAction?name=${sessionScope.uName}&isEdit=T" target="mainFrame"
 								class="left-font03" onClick="tupian('24');">我的文章 </a>
 						</td>
 					</tr>
@@ -234,7 +234,7 @@ body {
 							<img id="xiaotu1" src="../images/ico06.gif" width="8" height="12" />
 						</td>
 						<td width="91%">
-							<a href="listxiangmuxinxi.htm" target="mainFrame"
+							<a href="${pageContext.request.contextPath}/buty/lookButyAction" target="mainFrame"
 								class="left-font03" onClick="tupian('1');">值班管理</a>
 						</td>
 					</tr>
@@ -247,40 +247,22 @@ body {
 								class="left-font03" onClick="tupian('4');">文章审核|文章管理</a>
 						</td>
 					</tr>
-					<tr>
+					<!-- <tr>
 						<td width="9%" height="20">
 							<img id="xiaotu2" src="../images/ico06.gif" width="8" height="12" />
 						</td>
 						<td width="91%">
 							<a href="listxuqiu.htm" target="mainFrame"
-								class="left-font03" onClick="tupian('2');">专题管理|投票管理</a>
+								class="left-font03" onClick="tupian('2');">专题管理</a>
 						</td>
-					</tr>
+					</tr> -->
 					<tr>
 						<td width="9%" height="20">
 							<img id="xiaotu5" src="../images/ico06.gif" width="8" height="12" />
 						</td>
 						<td width="91%">
-							<a href="listmokuai.htm" target="mainFrame"
-								class="left-font03" onClick="tupian('5');">公告管理|链接提示</a>
-						</td>
-					</tr>
-					<tr>
-						<td width="9%" height="20">
-							<img id="xiaotu3" src="../images/ico06.gif" width="8" height="12" />
-						</td>
-						<td width="91%">
-							<a href="listgongneng.htm" target="mainFrame"
-								class="left-font03" onClick="tupian('3');">广告管理</a>
-						</td>
-					</tr>
-					<tr>
-						<td width="9%" height="20">
-							<img id="xiaotu6" src="../images/ico06.gif" width="8" height="12" />
-						</td>
-						<td width="91%">
-							<a href="listshangchuan.htm" target="mainFrame" 
-								class="left-font03" onClick="tupian('6');">备份压缩</a>
+							<a href="${pageContext.request.contextPath}/vote/selectVoteAction" target="mainFrame"
+								class="left-font03" onClick="tupian('5');">投票管理</a>
 						</td>
 					</tr>
 					<tr>
@@ -289,7 +271,7 @@ body {
 						</td>
 						<td width="91%">
 							<a href="listchengbenxinxi.htm" target="mainFrame" 
-								class="left-font03" onClick="tupian('7');">信息探测</a>
+								class="left-font03" onClick="tupian('7');">信息统计</a>
 						</td>
 					</tr>
 				</table>
@@ -476,7 +458,7 @@ body {
 				<!--  用户管理结束    -->
 				
 				<!-- 系统管理开始 -->
-				<table width="100%" border="0" cellpadding="0" cellspacing="0"
+				<!-- <table width="100%" border="0" cellpadding="0" cellspacing="0"
 					class="left-table03">
 					<tr>
 						<td height="29">
@@ -517,11 +499,11 @@ body {
 								class="left-font03" onClick="tupian('14');">功能设置</a>
 						</td>
 					</tr>
-				</table>
+				</table> -->
 				<!-- 系统管理结束-->
 				
 				<!-- 系统帮助开始 -->
-				<table width="100%" border="0" cellpadding="0" cellspacing="0"
+				<!-- <table width="100%" border="0" cellpadding="0" cellspacing="0"
 					class="left-table03">
 					<tr>
 						<td height="29">
@@ -533,8 +515,8 @@ body {
 											src="../images/ico04.gif" width="8" height="11" />
 									</td>
 									<td width="92%">
-										<!-- <a href="mode.html" target="mainFrame"
-											class="left-font03" onClick="list('6');">系统帮助</a> -->
+										<a href="mode.html" target="mainFrame"
+											class="left-font03" onClick="list('6');">系统帮助</a>
 										<a href="javascript:" target="mainFrame"
 											class="left-font03" onClick="list('6');">系统帮助</a>
 									</td>
@@ -563,7 +545,7 @@ body {
 							class="left-font03" onClick="tupian('16');">规章制度</a>
 						</td>
 					</tr>
-				</table>
+				</table> -->
 				<!-- 系统帮助结束-->
 			</TD>
 		</tr>

@@ -22,7 +22,7 @@
         <property name="rcontent" type="java.lang.String">
             <column name="rContent" />
         </property>
-        <property name="rtime" type="java.util.Date">
+        <property name="rtime" type="java.sql.Timestamp">
             <column name="rTime" length="10" />
         </property>
     </class>

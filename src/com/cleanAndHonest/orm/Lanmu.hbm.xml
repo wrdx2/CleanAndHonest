@@ -8,10 +8,16 @@
     <class name="com.cleanAndHonest.orm.Lanmu" table="lanmu" schema="dbo" catalog="CleanAndHonest">
         <id name="lno" type="java.lang.Integer">
             <column name="lNo" />
-            <generator class="assigned" />
+            <generator class="native" />
         </id>
         <property name="ltype" type="java.lang.String">
             <column name="lType" not-null="true" />
+        </property>
+        <property name="ltype2" type="java.lang.String">
+            <column name="lType2" />
+        </property>
+        <property name="ltype3" type="java.lang.String">
+            <column name="lType3" />
         </property>
         <property name="lstate" type="java.lang.Integer">
             <column name="lState" />

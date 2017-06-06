@@ -31,7 +31,7 @@
         <property name="ccontent" type="java.lang.String">
             <column name="cContent" not-null="true" />
         </property>
-        <property name="ctime" type="java.util.Date">
+        <property name="ctime" type="java.sql.Timestamp">
             <column name="cTime" length="10" not-null="true" />
         </property>
         <property name="cattach" type="java.lang.String">

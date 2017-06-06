@@ -31,4 +31,33 @@ public interface LanmuBiz {
 	 */
 	public void renameLms(Lanmu rlm);
 
+	/**
+	 * 按栏目类型查询子栏目信息
+	 * @param type 所属类别
+	 * @param cont 要查询栏目所属类别的名称
+	 * @return 栏目列表
+	 */
+	public List<Lanmu> typeList(String type, String cont);
+
+	/**
+	 * 按栏目类型查询所有栏目信息
+	 * @param type 所属类别
+	 * @param cont 要查询栏目所属类别的名称
+	 * @return 栏目列表
+	 */
+	public List<Lanmu> lmtypeArList(String type, String cont);
+
+	/**
+	 * 查询栏目的详细信息
+	 * @param lno 栏目id
+	 * @return 某栏目的详细信息
+	 */
+	public Lanmu xxLanmu(Integer lno);
+
+	/**
+	 * 查询出要在前台显示的栏目的信息
+	 * @return 栏目列表
+	 */
+	public List<Lanmu> disList();
+
 }

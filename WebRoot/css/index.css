@@ -67,6 +67,7 @@
 .art{
     display:inline;
     width:360px;
+    height: 230px;
     margin:0px 0px 5px 5px;
 	border-left:solid 1px #BBBBBB;
 	border-right:solid 1px #BBBBBB;

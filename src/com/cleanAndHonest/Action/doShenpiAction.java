@@ -1,10 +1,12 @@
 package com.cleanAndHonest.Action;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.Map;
 
 import com.cleanAndHonest.Biz.Impl.ShenPiBizImpl;
 import com.cleanAndHonest.Biz.Impl.doShenpiBizImpl;
+import com.cleanAndHonest.Util.DateUtil;
 import com.cleanAndHonest.orm.Reply;
 import com.cleanAndHonest.orm.User;
 import com.opensymphony.xwork2.ActionContext;
@@ -36,7 +38,8 @@ public class doShenpiAction extends ActionSupport {
 		sp.setRcontent(text);
 		sp.setRemail(us.getEmail());
 		sp.setRtel(us.getUtel());
-		sp.setRtime(new Date(new java.util.Date().getTime()));
+		sp.setRtime(Timestamp.valueOf(DateUtil.DateToString(
+				"yyyy-MM-dd HH:mm:ss", new Date(new java.util.Date().getTime()))));
 		sp.setRname(us.getUname().trim()+"--"+us.getOffice());
 		doShenpiBiz.doShenpi(sp);
 		shenpiBiz.upstate(Integer.valueOf(rno));

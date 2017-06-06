@@ -12,8 +12,10 @@
 <meta http-equiv="Content-Language" content="zh-cn">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>高校廉政建设</title>
-<link href="./css/home.css" rel="stylesheet">
-<link href="./css/index.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/home.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/index.css" rel="stylesheet">
+<script type="text/JavaScript" src="${pageContext.request.contextPath}/js/jquery.js"></script>
+<script type="text/JavaScript" src="${pageContext.request.contextPath}/js/pageDisp.js"></script>
 <link rel="Shortcut Icon" href="WRZCNET.ico">
 <!--IE地址栏前换成自己的图标-->
 <link rel="Bookmark" href="WRZCNET.ico">
@@ -25,87 +27,13 @@ function Helpor_net()
 }
 window.onerror = Helpor_net;
 </script>
-<script src="inc/slide.js" type="text/javascript"></script>
-
-<script type="text/JavaScript">function MM_openBrWindow(theURL,winName,features) { //v2.0
+<script type="text/JavaScript">
+function MM_openBrWindow(theURL,winName,features) { //v2.0
   window.open(theURL,winName,features);
 }
 </script>
 <script language="JavaScript">
 if (self != top) top.location.href = window.location.href;
-</script>
-<script language="JavaScript">//
-var version = "other";
-browserName = navigator.appName;   
-browserVer = parseInt(navigator.appVersion);
-if (browserName == "Netscape" && browserVer >= 3) version = "n3";
-else if (browserName == "Netscape" && browserVer < 3) version = "n2";
-else if (browserName == "Microsoft Internet Explorer" && browserVer >= 4) version = "e4";
-else if (browserName == "Microsoft Internet Explorer" && browserVer < 4) version = "e3";
-function marquee1()
-{
-	if (version == "e4" | version == "n3")
-	{
-		document.write("<marquee style='BOTTOM: 0px; FONT-WEIGHT: 100px; HEIGHT:120px;  TEXT-ALIGN: left; TOP: 0px' id='news' scrollamount='1' scrolldelay='10' behavior='loop' direction='up' border='0' onmouseover='this.stop()' onmouseout='this.start()'>");
-	}
-}
-
-function marquee2()
-{
-	if (version == "e4" | version == "n3")
-	{
-		document.write("</marquee>");
-	}
-}
-
-function marquee_logo_news()
-{
-	if (version == "e4")
-	{
-		document.write("<marquee style='BOTTOM: 0px; FONT-WEIGHT: 1200px; HEIGHT:31px;  TEXT-ALIGN: left; TOP: 0px' id='link_map' scrollamount='2' scrolldelay='10' behavior='alternate' direction='right' border='0' onmouseover='this.stop()' onmouseout='this.start()'>");
-	}
-}
-
-function marquee3()
-{
-	if (version == "e4" | version == "n3")
-	{
-		document.write("<marquee direction='left' border='0' onmouseover='this.stop()' onmouseout='this.start()'>");
-	}
-}
-
-function marquee4()
-{
-	if (version == "e4" | version == "n3")
-	{
-		document.write("</marquee>");
-	}
-}
-
-function marquee5()
-{
-	if (version == "e4" | version == "n3")
-	{
-		document.write("<marquee style='BOTTOM: 0px; FONT-WEIGHT: 100px; HEIGHT:100px;  TEXT-ALIGN: left; TOP: 0px' id='news' scrollamount='1' scrolldelay='10' behavior='loop' direction='up' border='0' onmouseover='this.stop()' onmouseout='this.start()'>");
-	}
-}
-
-function marquee6()
-{
-	if (version == "e4" | version == "n3")
-	{
-		document.write("</marquee>");
-	}
-}
-
-</script>
-<script language="JavaScript1.2">
-function makevisible(cur,which){
-if (which==0)
-cur.filters.alpha.opacity=100
-else
-cur.filters.alpha.opacity=20
-}
 </script>
 
 <script language="javascript">
@@ -130,7 +58,7 @@ function MM_findObj(n, d) { //v4.01
 	<!--内容部分开始-->
 	<jsp:include page="head.jsp"></jsp:include>
 
-<script language="javascript">
+	<script language="javascript">
 //==========================
 //        菜单开始
 //==========================
@@ -662,13 +590,6 @@ Accelimation.timerID = null;
 </script>
 
 	<script language="javascript">
-//原 mt_dropdown_initialize.js
-		var preloaded = [];
-
-		// here is a lame preloading script i am putting in just for demonstration
-		for (var i = 1; i <= 8; i++) {
-			preloaded[i] = [loadImage(i + "-0.gif"), loadImage(i + "-1.gif")];
-		}
 
 		function init() {
 			if (mtDropDown.isSupported()) {
@@ -685,45 +606,47 @@ Accelimation.timerID = null;
 </script>
 
 
-	<div class="global_nav" algin="center">
+	<div class="global_nav" align="center">
 		<ul>
-			<li><a href="" id="menu1"
-				title="廉政动态">廉政动态</a>
+			<li><a
+				href="${pageContext.request.contextPath}/article/selLmArArticleAction?type=1&cont=廉政动态"
+				id="menu1" title="廉政动态">廉政动态</a>
 			</li>
-			<li><a href="" id="menu2"
-				title="政务公开">政务公开</a>
+			<li><a
+				href="${pageContext.request.contextPath}/article/selLmArArticleAction?type=1&cont=政务公开"
+				id="menu2" title="政务公开">政务公开</a>
 			</li>
-			<li><a href="" id="menu3"
-				title="基层廉政">基层廉政</a>
+			<li><a
+				href="${pageContext.request.contextPath}/article/selLmArArticleAction?type=1&cont=基层廉政"
+				id="menu3" title="基层廉政">基层廉政</a>
 			</li>
-			<!-- <li><a href="" id="menu4"
-				title="大漠清风">大漠清风</a>
-			</li> -->
-			<li><a href="" id="menu5" title="信访举报">信访举报</a>
+			<li><a
+				href="${pageContext.request.contextPath}/article/selLmArArticleAction?type=1&cont=信访举报"
+				id="menu5" title="信访举报">信访举报</a>
 			</li>
-			<li><a href="" id="menu6"
-				title="廉政教育">廉政教育</a>
+			<li><a
+				href="${pageContext.request.contextPath}/article/selLmArArticleAction?type=1&cont=廉政教育"
+				id="menu6" title="廉政教育">廉政教育</a>
 			</li>
-			<li><a href="" id="menu7"
-				title="效能建设">效能建设</a>
+			<li><a
+				href="${pageContext.request.contextPath}/article/selLmArArticleAction?type=1&cont=效能建设"
+				id="menu7" title="效能建设">效能建设</a>
 			</li>
-			<!-- <li><a href="" id="menu8"
-				title="廉政视频">廉政视频</a>
-			</li> -->
-			<!-- <li><a href="" id="menu9"
-				title="廉政文化">廉政文化</a>
-			</li> -->
-			<li><a href="" id="menu10"
-				title="部门职能">部门职能</a>
+			<li><a
+				href="${pageContext.request.contextPath}/article/selLmArArticleAction?type=1&cont=部门职能"
+				id="menu10" title="部门职能">部门职能</a>
 			</li>
-			<li><a href="" id="menu11"
-				title="政风行风">政风行风</a>
+			<li><a
+				href="${pageContext.request.contextPath}/article/selLmArArticleAction?type=1&cont=政风行风"
+				id="menu11" title="政风行风">政风行风</a>
 			</li>
-			<li><a href="" id="menu12"
-				title="廉洁自律">廉洁自律</a>
+			<li><a
+				href="${pageContext.request.contextPath}/article/selLmArArticleAction?type=1&cont=廉洁自律"
+				id="menu12" title="廉洁自律">廉洁自律</a>
 			</li>
-			<li><a href="" id="menu13"
-				title="执法监察">执法监察</a>
+			<li><a
+				href="${pageContext.request.contextPath}/article/selLmArArticleAction?type=1&cont=执法监察"
+				id="menu13" title="执法监察">执法监察</a>
 			</li>
 		</ul>
 		<script language="javascript">
@@ -731,65 +654,41 @@ if (mtDropDown.isSupported()) {
 	var ms = new mtDropDownSet(mtDropDown.direction.down, 0, 0, mtDropDown.reference.bottomLeft);
 
 	var menu1 = ms.addMenu(document.getElementById('menu1'));
-	menu1.addItem('- 廉政信息',''); 
-	menu1.addItem('- 文件精神',''); 
-	menu1.addItem('- 政策法规',''); 
-	menu1.addItem('- 重要讲话',''); 
+	menu1.addItem('- 廉政信息','${pageContext.request.contextPath}/article/selLmArArticleAction?type=2&cont=廉政信息'); 
+	menu1.addItem('- 文件精神','${pageContext.request.contextPath}/article/selLmArArticleAction?type=2&cont=文化精神'); 
+	menu1.addItem('- 政策法规','${pageContext.request.contextPath}/article/selLmArArticleAction?type=2&cont=政策法规'); 
+	menu1.addItem('- 重要讲话','${pageContext.request.contextPath}/article/selLmArArticleAction?type=2&cont=重要讲话'); 
 
 	var subMenu0 = menu1.addMenu(menu1.items[0]);
-	subMenu0.addItem('- 人物简介','');
+	subMenu0.addItem('- 人物简介','${pageContext.request.contextPath}/article/selLmArArticleAction?type=3&cont=人物简介');
 
 	var menu2 = ms.addMenu(document.getElementById('menu2'));
-	menu2.addItem('- 工作决策','');
-	menu2.addItem('- 干部任免','');
-	menu2.addItem('- 事项研究','');
+	menu2.addItem('- 工作决策','${pageContext.request.contextPath}/article/selLmArArticleAction?type=2&cont=工作决策');
+	menu2.addItem('- 干部任免','${pageContext.request.contextPath}/article/selLmArArticleAction?type=2&cont=干部任免');
+	menu2.addItem('- 事项研究','${pageContext.request.contextPath}/article/selLmArArticleAction?type=2&cont=事项研究');
 
 	var menu3 = ms.addMenu(document.getElementById('menu3'));
-	menu3.addItem('- 廉政信息','');
-	menu3.addItem('- 文件精神','');
-	menu3.addItem('- 政策法规','');
-
-	/* var menu4 = ms.addMenu(document.getElementById('menu4'));
-	menu4.addItem('- 理论征文','');
-	menu4.addItem('- 演讲比赛','');
-	menu4.addItem('- 知识竞答','');  */
+	menu3.addItem('- 廉政信息','${pageContext.request.contextPath}/article/selLmArArticleAction?type=2&cont=廉政信息');
+	menu3.addItem('- 文件精神','${pageContext.request.contextPath}/article/selLmArArticleAction?type=2&cont=文件精神');
+	menu3.addItem('- 政策法规','${pageContext.request.contextPath}/article/selLmArArticleAction?type=2&cont=政策法规');
 
 	var menu7 = ms.addMenu(document.getElementById('menu7'));
-	//menu7.addItem('- 便民服务',''); 
-	menu7.addItem('- 干部作风',''); 
-	menu7.addItem('- 效能投诉',''); 
-	menu7.addItem('- 制度建设',''); 
-
-	/* var menu8 = ms.addMenu(document.getElementById('menu8'));
-	menu8.addItem('- 廉政漫画',''); 
-	menu8.addItem('- 广告展播','');  */
-
-	/* var menu9 = ms.addMenu(document.getElementById('menu9'));
-	menu9.addItem('- 六进活动',''); 
-	menu9.addItem('- 书画墨香',''); 
-	menu9.addItem('- 检察文苑','');  */
+	menu7.addItem('- 干部作风','${pageContext.request.contextPath}/article/selLmArArticleAction?type=2&cont=干部作风'); 
+	menu7.addItem('- 效能投诉','${pageContext.request.contextPath}/article/selLmArArticleAction?type=2&cont=效能投诉'); 
+	menu7.addItem('- 制度建设','${pageContext.request.contextPath}/article/selLmArArticleAction?type=2&cont=制度建设'); 
 
 	var menu10 = ms.addMenu(document.getElementById('menu10'));
-	menu10.addItem('- 队伍建设',''); 
-	menu10.addItem('- 机构设置',''); 
-	menu10.addItem('- 领导分工',''); 
+	menu10.addItem('- 队伍建设','${pageContext.request.contextPath}/article/selLmArArticleAction?type=2&cont=队伍建设'); 
+	menu10.addItem('- 机构设置','${pageContext.request.contextPath}/article/selLmArArticleAction?type=2&cont=机构设置'); 
+	menu10.addItem('- 领导分工','${pageContext.request.contextPath}/article/selLmArArticleAction?type=2&cont=领导分工'); 
 
 	var menu11 = ms.addMenu(document.getElementById('menu11'));
-	menu11.addItem('- 纠风工作',''); 
-	menu11.addItem('- 监督检查',''); 
-	menu11.addItem('- 源头治理',''); 
-
-	/* var subMenu0 = menu11.addMenu(menu11.items[0]);
-	subMenu0.addItem('- [旅游景区]','');
-	subMenu0.addItem('- [旅游导览]','');
-	subMenu0.addItem('- [特色餐饮]','');
-	subMenu0.addItem('- [宾馆酒店]','');
-	subMenu0.addItem('- [旅 行 社]','');
-	subMenu0.addItem('- [旅游黄页]','');
-	subMenu0.addItem('- [摄影天地]',''); */
+	menu11.addItem('- 纠风工作','${pageContext.request.contextPath}/article/selLmArArticleAction?type=2&cont=纠风工作'); 
+	menu11.addItem('- 监督检查','${pageContext.request.contextPath}/article/selLmArArticleAction?type=2&cont=监督检查'); 
+	menu11.addItem('- 源头治理','${pageContext.request.contextPath}/article/selLmArArticleAction?type=2&cont=源头治理');
 
 	var menu12 = ms.addMenu(document.getElementById('menu12'));
-	menu12.addItem('- 廉政制度',''); 
+	menu12.addItem('- 廉政制度','${pageContext.request.contextPath}/article/selLmArArticleAction?type=2&cont=廉政制度'); 
 
 	mtDropDown.renderAll();
 	}
@@ -1281,80 +1180,7 @@ if (mtDropDown.isSupported()) {
 				</div>
 			</div>
 		</div>
-		<div id="mtDropDown10" class="mtDropdownMenu"
-			style="width: 108px; height: 188px; visibility: hidden; left: 700px; top: 294px; z-index: 134;">
-			<div class="content"
-				style="width: 106px; height: 186px; left: -106px;">
-				<table class="items" cellpadding="0" cellspacing="0" border="0">
-					<tbody>
-						<tr>
-							<td colspan="2"><img src="images/Menu_x.gif" width="1"
-								height="0">
-							</td>
-						</tr>
-						<tr class="item">
-							<td style="padding:4px; padding-left:4px;">- [旅游景区]</td>
-							<td width="14" style="padding:4px; padding-right:4px;"><img
-								src="images/Menu_x.gif" width="14" height="14">
-							</td>
-						</tr>
-						<tr class="item">
-							<td style="padding:4px; padding-left:4px;">- [旅游导览]</td>
-							<td width="14" style="padding:4px; padding-right:4px;"><img
-								src="images/Menu_x.gif" width="14" height="14">
-							</td>
-						</tr>
-						<tr class="item">
-							<td style="padding:4px; padding-left:4px;">- [特色餐饮]</td>
-							<td width="14" style="padding:4px; padding-right:4px;"><img
-								src="images/Menu_x.gif" width="14" height="14">
-							</td>
-						</tr>
-						<tr class="item">
-							<td style="padding:4px; padding-left:4px;">- [宾馆酒店]</td>
-							<td width="14" style="padding:4px; padding-right:4px;"><img
-								src="images/Menu_x.gif" width="14" height="14">
-							</td>
-						</tr>
-						<tr class="item">
-							<td style="padding:4px; padding-left:4px;">- [旅 行 社]</td>
-							<td width="14" style="padding:4px; padding-right:4px;"><img
-								src="images/Menu_x.gif" width="14" height="14">
-							</td>
-						</tr>
-						<tr class="item">
-							<td style="padding:4px; padding-left:4px;">- [旅游黄页]</td>
-							<td width="14" style="padding:4px; padding-right:4px;"><img
-								src="images/Menu_x.gif" width="14" height="14">
-							</td>
-						</tr>
-						<tr class="item">
-							<td style="padding:4px; padding-left:4px;">- [摄影天地]</td>
-							<td width="14" style="padding:4px; padding-right:4px;"><img
-								src="images/Menu_x.gif" width="14" height="14">
-							</td>
-						</tr>
-						<tr>
-							<td colspan="2"><img src="images/Menu_x.gif" width="1"
-								height="0">
-							</td>
-						</tr>
-					</tbody>
-				</table>
-				<div class="shadowBottom"
-					style="top: 184px; width: 101px; background-color: rgb(210, 209, 209);">
-					<img src="images/Menu_x.gif" width="1" height="1">
-				</div>
-				<div class="shadowRight"
-					style="left: 104px; height: 183px; background-color: rgb(210, 209, 209);">
-					<img src="images/Menu_x.gif" width="1" height="1">
-				</div>
-				<div class="background"
-					style="width: 104px; height: 184px; background-color: rgb(235, 235, 235);">
-					<img src="images/Menu_x.gif" width="1" height="1">
-				</div>
-			</div>
-		</div>
+
 		<div id="mtDropDown11" class="mtDropdownMenu top"
 			style="width: 96px; height: 32px; visibility: hidden;">
 			<div class="content" style="width: 94px; height: 30px; top: -32px;">
@@ -1398,168 +1224,12 @@ if (mtDropDown.isSupported()) {
 	<div id="CLeft">
 		<!--导读开始-->
 		<div id="daodu">
-			<div id="picture">
-				<table width="280" border="0" cellpadding="0" cellspacing="0"
-					id="Layer7" style="display: none;">
-					<tbody>
-						<tr>
-							<td height="17" style="CURSOR: hand;">
-							<img src="image/pic1.gif" width="287" height="30" border="0"
-								usemap="#Map7">
-							</td>
-						</tr>
-						<tr>
-							<td height="200" align="center"><script
-									type="text/javascript">
-imgUrl1="uploadfile/jpg/2010-6/201061993511731.jpg";
-imgtext1="网站建设中";
-imgLink1=escape("");
-
- var focus_width=285;
- var focus_height=180;
- var text_height=20;
- var swf_height = focus_height+text_height;
- 
- var pics=imgUrl1+"|"+imgUrl2+"|"+imgUrl3+"|"+imgUrl4+"|"+imgUrl5;
- var links=imgLink1+"|"+imgLink2+"|"+imgLink3+"|"+imgLink4+"|"+imgLink5;
- var texts=imgtext1+"|"+imgtext2+"|"+imgtext3+"|"+imgtext4+"|"+imgtext5;
- 
- document.write('<object type="application/x-shockwave-flash" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" width="'+ focus_width +'" height="'+ swf_height +'">');
- document.write('<param name="allowScriptAccess" value="sameDomain"><param name="movie" value="images/focus.swf"><param name="quality" value="high"><param name="bgcolor" value="#F8DDAA">');
- document.write('<param name="menu" value="false"><param name=wmode value="opaque">');
- document.write('<param name="FlashVars" value="pics='+pics+'&links='+links+'&texts='+texts+'&borderwidth='+focus_width+'&borderheight='+focus_height+'&textheight='+text_height+'">');
- document.write('<embed src="images/focus.swf" wmode="opaque" FlashVars="pics='+pics+'&links='+links+'&texts='+texts+'&borderwidth='+focus_width+'&borderheight='+focus_height+'&textheight='+text_height+'" menu="false" bgcolor=""#bbbbbb" quality="high" width="'+ focus_width +'" height="'+ focus_height +'" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />'); 
- document.write('</object>');
-  </script>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-
-				<table width="280" height="220" border="0" cellpadding="0"
-					cellspacing="0" id="Layer8" style="visibility: visible;">
-					<tbody>
-						<tr>
-							<td height="17" style="CURSOR: hand;"><img
-								src="image/pic2.gif" width="287" height="30" border="0"
-								usemap="#Map8">
-							</td>
-						</tr>
-						<tr>
-							<td height="200" align="center">
-								<table width="285" border="0" align="center" cellpadding="0"
-									cellspacing="0">
-									<tbody>
-										<tr>
-											<td rowspan="8" bgcolor="#FFFFFF" align="center">
-											<object
-													classid="CLSID:22d6f312-b0f6-11d0-94ab-0080c74c7e95"
-													codebase="http://activex.microsoft.com/activex/controls/mplayer/en/nsmp2inf.cab#Version=6,4,5,715"
-													type="application/x-oleobject" width="285" height="200"
-													hspace="0" vspace="0" align="middle" style="FILTER: Gray()"
-													standby="Loading Microsoft Windows Media Player components..."
-													id="NSPlay">
-													<!-- ASX File Name -->
-													<param name="AutoRewind" value="1">
-													<param name="FileName"
-														value="uploadfile/wmv/2010-6-25/2010625174446811.wmv">
-													<!-- Display Controls -->
-													<param name="ShowControls" value="1">
-													<!-- Display Position Controls -->
-													<param name="ShowPositionControls" value="0">
-													<!-- Display Audio Controls -->
-													<param name="ShowAudioControls" value="1">
-													<!-- Display Tracker Controls -->
-													<param name="ShowTracker" value="0">
-													<!-- Show Display -->
-													<param name="ShowDisplay" value="0">
-													<!-- Display Status Bar -->
-													<param name="ShowStatusBar" value="0">
-													<!-- Diplay Go To Bar -->
-													<param name="ShowGotoBar" value="0">
-													<!-- Display Controls -->
-													<param name="ShowCaptioning" value="0">
-													<!-- Player Autostart -->
-													<param name="AutoStart" value="0">
-													<!-- Animation at Start -->
-													<param name="Volume" value="-100">
-													<param name="AnimationAtStart" value="0">
-													<!-- Transparent at Start -->
-													<param name="TransparentAtStart" value="0">
-													<!-- Do not allow a change in display size -->
-													<param name="AllowChangeDisplaySize" value="0">
-													<!-- Do not allow scanning -->
-													<param name="AllowScan" value="0">
-													<!-- Do not show contect menu on right mouse click -->
-													<param name="EnableContextMenu" value="0">
-													<!-- Do not allow playback toggling on mouse click -->
-													<param name="ClickToPlay" value="1">
-													<!-- 是否循环播放 -->
-													<param name="PlayCount" value="0">
-												</object>
-											</td>
-										</tr>
-									</tbody>
-								</table>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-
-			</div>
-			<div class="tt_tj">
-				<div class="tiaotiao">
-					<a target="_blank" href="" title="通知公告">通知公告</a>
-				</div>
-				<div class="tj">
-					<ul class="list">
-						<li>
-						<span>11/9</span>·
-						<a target="_blank" href="" title="网站建设中">网站建设中</a>
-						</li>
-
-						<li><span>11/9</span>·
-						<a target="_blank" href="" title="网站建设中"> 网站建设中</a>
-						</li>
-
-					</ul>
-				</div>
-			</div>
-			<div class="clear_float"></div>
-			<map name="Map7" id="Map7">
-				<area onmouseover="javascript:ShowPic(Layer7);" shape="rect"
-					coords="14,1,115,30">
-				<area onmouseover="javascript:ShowPic(Layer8);" shape="rect"
-					coords="134,5,204,28">
-			</map>
-			<map name="Map8" id="Map8">
-				<area onmouseover="javascript:ShowPic(Layer7);shape=quot;rect&quot;"
-					coords="28,7,96,28">
-				<area onmouseover="javascript:ShowPic(Layer8);shape=quot;rect&quot;"
-					coords="117,2,218,30" shape="rect">
-			</map>
-
-
-			<script>
-       document.all.Layer8.style.display="none";
-       document.all.Layer8.style.visibility="hidden";
-
-function ShowPic(taobj) {
-       document.all.Layer7.style.display="none";
-       document.all.Layer8.style.display="none";
-
-	taobj.style.display="";
-	taobj.style.visibility="visible";
-
-}
-</script>
 		</div>
 		<div class="sitesearch">
-			<form method="post" name="myform1" action="Result.asp"
+			<form method="post" name="myform1" action="searchArticleAction"
 				target="newwindow">
 				<div class="s_cnt">
-					站内搜索 ： 
-					<select name="action"
+					站内搜索 ： <select name="action"
 						style="width:130px;height:18px;border:1px solid #e4e4e4"
 						align="absmiddle">
 						<option value="">- 全 部 内 容 -</option>
@@ -1567,8 +1237,7 @@ function ShowPic(taobj) {
 						<option value="content">- 按 内 容 -</option>
 						<option value="editor">- 按 作 者 -</option>
 						<option value="about">- 按 关 键 字 -</option>
-					</select> 
-					<input type="text" name="keyword"
+					</select> <input type="text" name="keyword"
 						style="width:380px;height:18px;line-height:18px;border:1px solid #e4e4e4"
 						value="请输入查询关键字" onfocus="if (value =='请输入查询关键字'){value ='';}"
 						onblur="if (value ==''){value='请输入查询关键字';}" maxlength="50"
@@ -1582,195 +1251,101 @@ function ShowPic(taobj) {
 
 		<!--文章列表开始-->
 
-		<div class="art float_left">
+		<!-- <div class="art float_left">
 			<h2>
 				<span class="more">
 				<a href="">
 				<img src="image/more.gif" alt="更多" width="39" height="9" border="0">
-				</a> </span><a href="">政务公开</a>
+				</a> </span>
+				<a href="">政务公开</a>
 			</h2>
-
-			<div class="lanmu_pic">
+			<!-- <div class="lanmu_pic">
 				<a class="class" target="_blank" href="" title="网站建设中">
 				<img src="uploadfile/jpg/2010-6/201061991413493.jpg" width="112"
-					border="1" style="border-color:#ffffff" height="88"> </a>
-
-			</div>
+					border="1" style="border-color:#ffffff" height="88">
+				</a>
+			</div> >>>
 
 			<ul class="list">
-				<li><span>11.19</span>·
-				<a href="" title="网站建设中" target="_blank">
-					<font color=""> 网站建设中 </font> </a>
-					<font class="pic_word">[图]</font> <!--标题后评论提示-->
-
+				<li><span>11.19</span>· <a href="" title="网站建设中"
+					target="_blank"> <font color=""> 网站建设中 </font> </a> <font
+					class="pic_word">[图]</font> 标题后评论提示
 				</li>
-
-				<li><span>11.9</span>·
-				<a href="" title="网站建设中" target="_blank">
-				<font color="">网站建设中</font> </a> <!--标题后评论提示--></li>
-
 			</ul>
 		</div>
 
 		<div class="art art_right float_right">
 			<h2>
-				<span class="more">
-				<a href="">
-				<img src="image/more.gif" alt="更多 " width="39" height="9" border="0">
-				</a> </span><a href="">基层廉政</a>
+				<span class="more"> <a href=""> <img src="image/more.gif"
+						alt="更多 " width="39" height="9" border="0"> </a> </span><a href="">基层廉政</a>
 			</h2>
-
-			<div class="lanmu_pic">
-				<a class="class" target="_blank" href="" title="网站建设中">
-				<img src="uploadfile/jpg/2010-6/201061992410422.jpg" width="112"
-					border="1" style="border-color:#ffffff" height="88"> </a>
-
-
-			</div>
 
 			<ul class="list">
 
-				<li><span>11.9</span>·
-				<a href="" title="网站建设中" target="_blank">
-				<font color="">网站建设中</font> </a> <!--标题后评论提示--></li>
+				<li><span>11.9</span>· <a href="" title="网站建设中" target="_blank">
+						<font color="">网站建设中</font> </a> 标题后评论提示</li>
 
 			</ul>
-		</div>
-
-		<div class="art float_left">
-
-			<h2>
-				<span class="more">
-				<a href="">
-				<img src="image/more.gif" alt="更多" width="39" height="9" border="0">
-				</a> </span><a href="">廉政文化</a>
-			</h2>
-
-			<div class="lanmu_pic">
-				<a class="class" target="_blank" href="" title="网站建设中"> 
-				<img src="uploadfile/jpg/2010-6/201061992940481.jpg" width="112"
-					border="1" style="border-color:#ffffff" height="88"> </a>
-			</div>
-
-			<ul class="list">
-
-				<li><span>11.9</span>·
-				<a href="" title="网站建设中" target="_blank">
-				<font color=""> 网站建设中</font> </a> <!--标题后评论提示--></li>
-			</ul>
-		</div>
-
-		<div class="art art_right float_right">
-			<h2>
-				<span class="more">
-				<a href="">
-				<img src="image/more.gif" alt="更多 " width="39" height="9" border="0">
-				</a> </span><a href="">廉政教育</a>
-			</h2>
-
-			<div class="lanmu_pic">
-				<a class="class" target="_blank" href="" title="网站建设中">
-				<img src="uploadfile/jpg/2010-6/201061993511731.jpg" width="112"
-					border="1" style="border-color:#ffffff" height="88"> </a>
-			</div>
-
-			<ul class="list">
-
-				<li><span>11.9</span>·
-				<a href="" title="网站建设中" target="_blank">
-					<font color=""> 网站建设中</font> </a> <!--标题后评论提示--></li>
-			</ul>
-		</div>
+		</div>-->
 
 		<div class="clear_float"></div>
-		<div class="newpic">
-			<div class="pic_t">
 
-				<div class="scrollpic" id="demo">
-					<!--滚动区的高度和宽度-->
-					<table align="center" cellpadding="0" cellspace="0" border="0">
-						<tbody>
-							<tr>
-								<td id="demo1" valign="top">
-									<table width="100%" cellpadding="0" cellspacing="0" border="0"
-										align="center">
-										<tbody>
-											<tr valign="top">
+		<!--互动专区开始-->
+		<div class="hudong">
+			<h2>
+				<span class="more">
+				<a href="" target="_blank">
+				<img src="image/more.gif" alt="更多" width="39" height="9" border="0">
+				</a> 
+				</span>
+				<a href="" target="_blank">廉政接待</a>
+			</h2>
+			<div class="vote float_left">
+				<div class="vote_tit">廉政调查</div>
 
-												<td align="center">
-													<div class="pic_cont"
-														onmouseover="this.className='pic_cont pic_cont_Hover'"
-														onmouseout="this.className='pic_cont'">
+				<div class="vote_list"><!-- 
+					<form action="" method="post" name="research" target="newwindow"
+						id="research"> -->
+						<table width="184" border="0" align="center" cellpadding="0"
+							cellspacing="0">
+							<tbody>
+								<tr>
+									<td height="25" colspan="2" align="center" valign="middle"
+										class="black_title">小型民意调查</td>
+								</tr>
+								<tr>
+									<td id="pageVoteName" height="25" colspan="2" align="center" valign="middle" class="black_title">
+									
+									</td>
+								</tr>
 
-														<a href="" target="_blank" title="">
-														<img src="uploadfile/jpg/2010-6/201061992410422.jpg"
-															width="120" height="90" border="0">
-														</a>
-													</div>
-												</td>
+								<tr id="pageVoteNode">
+									<td id="pageVote" colspan="2" align="left">
+									<!-- <input style=" border:0 " checked="checked" 
+										name="Options" type="CheckBox" value="1">
+										1.。。。<br> 
+									<input style=" border:0 " name="Options"
+										type="CheckBox" value="2">
+										2.。。。<br> -->
+										</td>
+								</tr>
+								<tr>
+									<td height="48" colspan="2" align="center">
+									<input style="width:50px;height:18px;border:1px solid #bbb;background:#fff;color:#333;text-align:center;line-height:16px;"
+										type="button" onclick="voteSubmit()" 
+										value="提 交">
+									<input onclick="voteLook()" type="button" value="查 看" 
+										style="width:50px;height:18px;border:1px solid #bbb;background:#fff;color:#333;text-align:center;line-height:16px;">
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					<!-- </form> -->
 
-												<td align="center">
-													<div class="pic_cont"
-														onmouseover="this.className='pic_cont pic_cont_Hover'"
-														onmouseout="this.className='pic_cont'">
-
-														<a href="" target="_blank" title="">
-														<img src="uploadfile/jpg/2010-6/201061991413493.jpg"
-															width="120" height="90" border="0"> </a>
-													</div>
-												</td>
-											</tr>
-										</tbody>
-									</table></td>
-								<td id="demo2" valign="top">
-									<table width="100%" cellpadding="0" cellspacing="0" border="0"
-										align="center">
-										<tbody>
-											<tr valign="top">
-												<td align="center">
-													<div class="pic_cont"
-														onmouseover="this.className='pic_cont pic_cont_Hover'"
-														onmouseout="this.className='pic_cont'">
-
-														<a href="" target="_blank"
-															title=""><img
-															src="uploadfile/jpg/2010-6/201061993511731.jpg"
-															width="120" height="90" border="0"> </a>
-													</div>
-												</td>
-
-												<td align="center">
-													<div class="pic_cont"
-														onmouseover="this.className='pic_cont pic_cont_Hover'"
-														onmouseout="this.className='pic_cont'">
-
-														<a href="" target="_blank" title="">
-														<img src="uploadfile/jpg/2010-6/201061991413493.jpg"
-															width="120" height="90" border="0"> </a>
-													</div>
-												</td>
-											</tr>
-										</tbody>
-									</table></td>
-							</tr>
-						</tbody>
-					</table>
 				</div>
-
-<script>
-var speed=30;
-demo2.innerHTML=demo1.innerHTML;
-function Marquee1(){
-if(demo2.offsetWidth-demo.scrollLeft<=0)
-demo.scrollLeft-=demo1.offsetWidth;
-else{
-demo.scrollLeft++;
-}
-}
-var MyMar1=setInterval(Marquee1,speed);
-demo.onmouseover=function() {clearInterval(MyMar1);};
-demo.onmouseout=function() {MyMar1=setInterval(Marquee1,speed);};
-
+				<div class="vote_bottom"></div>
+			</div>
+<script type="text/javascript">
 function Show_SubLmy(id_num,num){
 	//舌签功能
 	for(var i=0;i<=9;i++){
@@ -1781,7 +1356,6 @@ function Show_SubLmy(id_num,num){
 		}
 		if(GetObj("S_ContMy_"+id_num+i)){
 			GetObj("S_ContMy_"+id_num+i).style.display='none';
-			
 		}
 		
 	}
@@ -1795,7 +1369,6 @@ function Show_SubLmy(id_num,num){
 	}
 	
 }
-
 function GetObj(objName){
 	
 	if(document.getElementById){
@@ -1810,60 +1383,6 @@ function GetObj(objName){
 	
 }
 </script>
-
-
-			</div>
-		</div>
-
-		<!--互动专区开始-->
-		<div class="hudong">
-			<h2>
-				<span class="more"><a href=""
-					target="_blank"><img src="image/more.gif" alt="更多" width="39"
-						height="9" border="0"> </a> </span><a href=""
-					target="_blank">廉政接待</a>
-			</h2>
-			<div class="vote float_left">
-				<div class="vote_tit">廉政调查</div>
-				<div class="vote_list">
-					<form action="" method="post" name="research"
-						target="newwindow" id="research">
-						<table width="184" border="0" align="center" cellpadding="0"
-							cellspacing="0">
-
-							<tbody>
-								<tr>
-									<td height="25" colspan="2" align="center" valign="middle"
-										class="black_title">小型民意调查</td>
-								</tr>
-
-								<tr>
-									<td colspan="2" align="left"><input style=" border:0 "
-										checked=true name="Options" type="CheckBox" value="1">
-										1.。。。<br> <input style=" border:0 " name="Options"
-										type="CheckBox" value="2"> 2.。。。<br> <input
-										style=" border:0 " name="Options" type="CheckBox" value="3">
-										3.。。。<br> <input style=" border:0 " name="Options"
-										type="CheckBox" value="4"> 4.。。。<br> <input
-										style=" border:0 " name="Options" type="CheckBox" value="5">
-										5.。。。<br></td>
-								</tr>
-								<tr>
-									<td height="48" colspan="2" align="center"><input
-										style="cursor:hand;width:50px;height:18px;border:1px solid #bbb;background:#fff;color:#333;text-align:center;line-height:16px;"
-										type="submit" value="提 交" id="submit1" name="submit1">
-										<input onclick="javascript:vote()" type="button" value="查 看"
-										id="button1" name="button1"
-										style="cursor:hand;width:50px;height:18px;border:1px solid #bbb;background:#fff;color:#333;text-align:center;line-height:16px;">
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</form>
-
-				</div>
-				<div class="vote_bottom"></div>
-			</div>
 			<div class="hd slide_bg float_right">
 				<ul class="T_Menu_style">
 					<li class="selectd" id="S_MenuMy_11" onclick="openurl('')"
@@ -1875,27 +1394,26 @@ function GetObj(objName){
 					<li id="S_MenuMy_14" onclick="openurl('')"
 						onmouseover="Show_SubLmy(1,4); return false">公众留言</li>
 				</ul>
-				<div id="S_ContMy_11">
+			<div id="S_ContMy_11">
 <script language="javascript">
 function myform_onsubmit() {
 	var i, n;
-	if (document. myform.receptnum.value=="")
+	if (document.myform.receptnum.value=="")
 		{
 		  alert("对不起，请输入受理编号！");
-		  document. myform.receptnum.focus();
+		  document.myform.receptnum.focus();
 		  return false;
 		 }
-	else if (document. myform.g_password.value=="")
+	else if (document.myform.g_password.value=="")
 		{
 		  alert("对不起，请输入查询密码！");
-		  document. myform.g_password.focus();
+		  document.myform.g_password.focus();
 		  return false;
 		 }
 }
 </script>
-					<form action="" method="post"
-						name="myform" target="_blank" id="myform"
-						onsubmit="return myform_onsubmit()" class="myform">
+					<form action="" method="post" name="myform" target="_blank"
+						id="myform" onsubmit="return myform_onsubmit()" class="myform">
 						受理编号：<input name="receptnum" type="text" id="receptnum"
 							style="width:80px;height:16px;border:1px solid #9FAABF">
 						查询密码：<input name="g_password" type="password" id="g_password"
@@ -1940,8 +1458,7 @@ function myform_onsubmit() {
 							<tr class="normal_tr" onmouseover="this.className='Hover_tr'"
 								onmouseout="this.className='normal_tr'">
 								<td height="22" align="center">已办结</td>
-								<td align="left">·<a class="list"
-									href="" target="_black">举报模块建设中..</a>
+								<td align="left">·<a class="list" href="" target="_black">举报模块建设中..</a>
 								</td>
 								<td align="center">2016-11-14</td>
 							</tr>
@@ -1963,8 +1480,7 @@ function myform_onsubmit() {
 							<tr class="normal_tr" onmouseover="this.className='Hover_tr'"
 								onmouseout="this.className='normal_tr'">
 								<td height="22" align="center">已处理</td>
-								<td align="left">·<a class="list"
-									href="" target="_blank">模块建设中</a>
+								<td align="left">·<a class="list" href="" target="_blank">模块建设中</a>
 								</td>
 								<td align="center">2016-11-16</td>
 							</tr>
@@ -1972,8 +1488,7 @@ function myform_onsubmit() {
 							<tr class="normal_tr" onmouseover="this.className='Hover_tr'"
 								onmouseout="this.className='normal_tr'">
 								<td height="22" align="center">已处理</td>
-								<td align="left">·<a class="list"
-									href="" target="_blank">建设中</a>
+								<td align="left">·<a class="list" href="" target="_blank">建设中</a>
 								</td>
 								<td align="center">2016-11-16</td>
 							</tr>
@@ -1987,11 +1502,9 @@ function myform_onsubmit() {
 					<div>
 						<ul class="list">
 
-							<li>·评论&nbsp;<a href=""
-								title="模块建设中" target="_blank">模块建设中</a>
+							<li>·评论&nbsp;<a href="" title="模块建设中" target="_blank">模块建设中</a>
 							</li>
-							<li>·留言&nbsp;<a href=""
-								title="模块建设中" target="_blank">模块建设中</a>
+							<li>·留言&nbsp;<a href="" title="模块建设中" target="_blank">模块建设中</a>
 							</li>
 
 						</ul>
@@ -2004,15 +1517,13 @@ function myform_onsubmit() {
 		<!--单位部门开始-->
 		<div class="hudong">
 			<h2>
-				<span class="more"><a href=""
-					target="_blank"><img src="image/more.gif" alt="更多" width="28"
-						height="9" border="0"> </a> </span><a href=""
-					target="_blank">下属单位部门</a>
+				<span class="more"><a href="" target="_blank"><img
+						src="image/more.gif" alt="更多" width="28" height="9" border="0">
+				</a> </span><a href="" target="_blank">下属单位部门</a>
 			</h2>
 			<div class="bm slide_bg">
 				<ul class="T_Menu_style">
-					<li class="selectd" id="S_MenuMy_21"
-						onclick="openurl('')"
+					<li class="selectd" id="S_MenuMy_21" onclick="openurl('')"
 						onmouseover="Show_SubLmy(2,1); return false">政府部门</li>
 					<li id="S_MenuMy_22" onclick="openurl('')"
 						onmouseover="Show_SubLmy(2,2); return false" class="">乡镇机构</li>
@@ -2026,41 +1537,41 @@ function myform_onsubmit() {
 						<tbody>
 							<tr>
 
-								<td height="19">·<a href="" class="list"
-									target="_blank">管理部</a></td>
+								<td height="19">·<a href="" class="list" target="_blank">管理部</a>
+								</td>
 
-								<td height="19">·<a href="" class="list"
-									target="_blank">策划部</a></td>
+								<td height="19">·<a href="" class="list" target="_blank">策划部</a>
+								</td>
 
-								<td height="19">·<a href="" class="list"
-									target="_blank">财务部</a></td>
+								<td height="19">·<a href="" class="list" target="_blank">财务部</a>
+								</td>
 
-								<td height="19">·<a href="" class="list"
-									target="_blank">客户部</a></td>
+								<td height="19">·<a href="" class="list" target="_blank">客户部</a>
+								</td>
 
-								<td height="19">·<a href="" class="list"
-									target="_blank">发改委</a></td>
+								<td height="19">·<a href="" class="list" target="_blank">发改委</a>
+								</td>
 
-								<td height="19">·<a href="" class="list"
-									target="_blank">建管局</a></td>
+								<td height="19">·<a href="" class="list" target="_blank">建管局</a>
+								</td>
 
 							</tr>
 
 							<tr>
-								<td height="19">·<a href="" class="list"
-									target="_blank">民政局</a></td>
+								<td height="19">·<a href="" class="list" target="_blank">民政局</a>
+								</td>
 
-								<td height="19">·<a href="" class="list"
-									target="_blank">商务局</a></td>
+								<td height="19">·<a href="" class="list" target="_blank">商务局</a>
+								</td>
 
-								<td height="19">·<a href="" class="list"
-									target="_blank">国税局</a></td>
+								<td height="19">·<a href="" class="list" target="_blank">国税局</a>
+								</td>
 
-								<td height="19">·<a href="" class="list"
-									target="_blank">建设局</a></td>
+								<td height="19">·<a href="" class="list" target="_blank">建设局</a>
+								</td>
 
-								<td height="19">·<a href="" class="list"
-									target="_blank">科技局</a></td>
+								<td height="19">·<a href="" class="list" target="_blank">科技局</a>
+								</td>
 
 							</tr>
 						</tbody>
@@ -2073,8 +1584,7 @@ function myform_onsubmit() {
 
 						<tbody>
 							<tr>
-								<td height="21">·<a href=""
-									target="_blank">办公室</a></td>
+								<td height="21">·<a href="" target="_blank">办公室</a></td>
 
 							</tr>
 						</tbody>
@@ -2086,8 +1596,7 @@ function myform_onsubmit() {
 						cellspacing="2">
 						<tbody>
 							<tr>
-								<td height="21">·
-								<a href="" target="_blank">纪检委</a>
+								<td height="21">· <a href="" target="_blank">纪检委</a>
 								</td>
 							</tr>
 						</tbody>
@@ -2102,93 +1611,7 @@ function myform_onsubmit() {
 	<div id="CRight">
 		<div class="Rcnt1">
 			<div class="zt">
-				<div class="zt_tit gg_tit">
-					<a href="" target="_blank">廉政公告</a>
-				</div>
-				<div class="zt_list">
-					<marquee direction="Up" id="scrollarea" onmouseover="this.stop();"
-						onmouseout="this.start();" scrollamount="1" scrolldelay="10"
-						height="190" style="height: 190px;">
-						<div id="demoa"
-							style="OVERFLOW: hidden; WIDTH: 240px; HEIGHT: 195px">
-							<div id="demoa1">
-								<ul>
-
-									<li>·<a href="dologin?ID=49"
-										class="link_style" target="_blank">模块建设中</a>
-									</li>
-
-								</ul>
-							</div>
-							<div id="demoa2"></div>
-						</div>
-					</marquee>
-					<script language="JavaScript">
-var version = "other";
-browserName = navigator.appName;   
-browserVer = parseInt(navigator.appVersion);
-if (browserName == "Netscape" && browserVer >= 3) version = "n3";
-else if (browserName == "Netscape" && browserVer < 3) version = "n2";
-else if (browserName == "Microsoft Internet Explorer" && browserVer >= 4) version = "e4";
-else if (browserName == "Microsoft Internet Explorer" && browserVer < 4) version = "e3";
-function marquee1()
-{
-	if (version == "e4" | version == "n3")
-	{
-		document.write("<marquee style='BOTTOM: 0px; FONT-WEIGHT: 100px; HEIGHT:120px;  TEXT-ALIGN: left; TOP: 0px' id='news' scrollamount='1' scrolldelay='10' behavior='loop' direction='up' border='0' onmouseover='this.stop()' onmouseout='this.start()'>");
-	}
-}
-
-function marquee2()
-{
-	if (version == "e4" | version == "n3")
-	{
-		document.write("</marquee>");
-	}
-}
-
-function marquee_logo_news()
-{
-	if (version == "e4")
-	{
-		document.write("<marquee style='BOTTOM: 0px; FONT-WEIGHT: 1200px; HEIGHT:31px;  TEXT-ALIGN: left; TOP: 0px' id='link_map' scrollamount='2' scrolldelay='10' behavior='alternate' direction='right' border='0' onmouseover='this.stop()' onmouseout='this.start()'>");
-	}
-}
-
-function marquee3()
-{
-	if (version == "e4" | version == "n3")
-	{
-		document.write("<marquee direction='left' border='0' onmouseover='this.stop()' onmouseout='this.start()'>");
-	}
-}
-
-function marquee4()
-{
-	if (version == "e4" | version == "n3")
-	{
-		document.write("</marquee>");
-	}
-}
-
-function marquee5()
-{
-	if (version == "e4" | version == "n3")
-	{
-		document.write("<marquee style='BOTTOM: 0px; FONT-WEIGHT: 100px; HEIGHT:100px;  TEXT-ALIGN: left; TOP: 0px' id='news' scrollamount='1' scrolldelay='10' behavior='loop' direction='up' border='0' onmouseover='this.stop()' onmouseout='this.start()'>");
-	}
-}
-
-function marquee6()
-{
-	if (version == "e4" | version == "n3")
-	{
-		document.write("</marquee>");
-	}
-}
-
-</script>
-				</div>
+				
 				<div class="zt_bottom"></div>
 			</div>
 			<div class="hotnews lianmu_bg">
@@ -2217,27 +1640,6 @@ function marquee6()
 				</table>
 
 			</div>
-			<div class="zt">
-				<div class="zt_tit">
-					<a href="" target="_blank">廉政专题</a>
-				</div>
-				<div class="zt_list">
-
-					<ul class="pic_sp">
-
-						<li><a href="" target="_blank">
-								<img src="uploadfile/gif/2010-6-25/201062511359364.gif"
-								width="240" height="50" border="0" align="center"> </a></li>
-
-						<li><a href="" target="_blank">
-								<img src="uploadfile/jpg/2010-6-25/2010625113435235.jpg"
-								width="240" height="50" border="0" align="center"> </a></li>
-
-					</ul>
-
-				</div>
-				<div class="zt_bottom"></div>
-			</div>
 
 			<div class="stat lianmu_bg">
 				<h3>网上举报中心</h3>
@@ -2245,39 +1647,33 @@ function marquee6()
 					<table width="100%" border="0" cellspacing="0" cellpadding="0">
 						<tbody>
 							<tr>
-								<td height="65"><a href=""
-									target="_blank"><img src="image/12380.gif" alt="我要举报"
-										border="0"> </a>
+								<td height="65"><a href="" target="_blank"><img
+										src="image/12380.gif" alt="我要举报" border="0"> </a>
 								</td>
 							</tr>
 							<tr>
-								<td height="65"><a href=""
-									target="_blank"><img src="image/12380range.png" alt="受理范围"
-										border="0"> </a>
+								<td height="65"><a href="" target="_blank"><img
+										src="image/12380range.png" alt="受理范围" border="0"> </a>
 								</td>
 							</tr>
 							<tr>
-								<td height="65"><a href=""
-									target="_blank"><img src="image/12380in.png" alt="举报须知"
-										border="0"> </a>
+								<td height="65"><a href="" target="_blank"><img
+										src="image/12380in.png" alt="举报须知" border="0"> </a>
 								</td>
 							</tr>
 							<tr>
-								<td height="65"><a href=""
-									target="_blank"><img src="image/12380dep.png" alt="受理单位"
-										border="0"> </a>
+								<td height="65"><a href="" target="_blank"><img
+										src="image/12380dep.png" alt="受理单位" border="0"> </a>
 								</td>
 							</tr>
 							<tr>
-								<td height="65"><a href=""
-									target="_blank"><img src="image/12380aq.png" alt="举报问答"
-										border="0"> </a>
+								<td height="65"><a href="" target="_blank"><img
+										src="image/12380aq.png" alt="举报问答" border="0"> </a>
 								</td>
 							</tr>
 							<tr>
-								<td height="65"><a href=""
-									target="_blank"><img src="image/12380bulide.png"
-										alt="制度建设" border="0"> </a>
+								<td height="65"><a href="" target="_blank"><img
+										src="image/12380bulide.png" alt="制度建设" border="0"> </a>
 								</td>
 							</tr>
 						</tbody>
@@ -2292,8 +1688,7 @@ function marquee6()
 				<div>
 					<ul class="list">
 
-						<li>·<a href=""
-							title="网站建设中" target="_blank"> <font
+						<li>·<a href="" title="网站建设中" target="_blank"> <font
 								color=""> 网站建设中。。。 </font> </a>
 						</li>
 					</ul>
@@ -2336,22 +1731,24 @@ function marquee6()
 					<h3>数据统计</h3>
 
 					<div class="visit">
-						<li>今日文章：<font color="red">[0]</font>
-						</li>
-						<li>文章总数：<font color="red">[0]</font>
-						</li>
-						<li>昨日访问：<font color="red">[0]</font>
-						</li>
-						<li>今日访问：<font color="red">[0]</font>
-						</li>
-						<li>上月访问：<font color="red">[0]</font>
-						</li>
-						<li>本月访问：<font color="red">[0]</font>
-						</li>
-						<li>访问总数：<font color="red">[0]</font>
-						</li>
-						<li>当前在线：<font color="red">[0]</font>
-						</li>
+						<ul>
+							<li>今日文章：<font color="red">[0]</font>
+							</li>
+							<li>文章总数：<font color="red">[0]</font>
+							</li>
+							<li>昨日访问：<font color="red">[0]</font>
+							</li>
+							<li>今日访问：<font color="red">[0]</font>
+							</li>
+							<li>上月访问：<font color="red">[0]</font>
+							</li>
+							<li>本月访问：<font color="red">[0]</font>
+							</li>
+							<li>访问总数：<font color="red">[0]</font>
+							</li>
+							<li>当前在线：<font color="red">[0]</font>
+							</li>
+						</ul>
 					</div>
 				</div>
 			</div>

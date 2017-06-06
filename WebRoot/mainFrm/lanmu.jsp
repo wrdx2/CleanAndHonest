@@ -61,9 +61,6 @@ html {
 <script src="${pageContext.request.contextPath}/js/lanmu.js"></script>
 <link href="../css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
-	/* function sousuo() {
-		window.open("gaojisousuo.htm","","depended=0,alwaysRaised=1,width=800,height=510,location=0,menubar=0,resizable=0,scrollbars=0,status=0,toolbar=0");
-	} */
 	pageSize2(8);
 	function selectAll() {
 		var obj = $("input:checkbox");
@@ -92,41 +89,6 @@ html {
 <body>
 	<!-- <form name="fom" id="fom" method="post" action=""></form> -->
 		<table width="100%" border="0" cellspacing="0" cellpadding="0">
-
-			<tr>
-				<td height="30">
-					<table width="100%" border="0" cellspacing="0" cellpadding="0">
-						<tr>
-							<td height="62" background="../images/nav04.gif">
-
-								<table width="98%" border="0" align="center" cellpadding="0"
-									cellspacing="0">
-									<tr>
-										<td width="21">
-											<img src="../images/ico07.gif" width="20"
-											height="18" />
-										</td>
-										<td width="538">查看内容：按时间： 
-											<input name="textfield" type="text" size="12" 
-												readonly="readonly" />
-											<span class="newfont06">至</span>
-											<input name="textfield" type="text" size="12" 
-												readonly="readonly" /> 
-											<input name="Submit4" type="button" class="right-button02" 
-												value="查 询" />
-										</td>
-										<td width="144" align="left">
-											<a href="#" onclick="sousuo()">
-											<input name="Submit3" type="button"
-												class="right-button07" value="高级搜索" /> </a>
-										</td>
-									</tr>
-								</table>
-							</td>
-						</tr>
-					</table>
-				</td>
-			</tr>
 			<tr>
 				<td>
 				
@@ -157,6 +119,9 @@ html {
 												<tr id="show_table_one" bgcolor="#EEEEEE">
 													<td width="4%" align="center" height="30">选择</td>
 													<td width="10%">栏目类型</td>
+													<td width="10%">总栏名称</td>
+													<td width="10%">大类名称</td>
+													<td width="10%">小类名称</td>
 													<td width="10%">审核状态</td>
 													<td width="10%">显示状态</td>
 													<td width="10%">操作</td>
@@ -167,7 +132,18 @@ html {
 													<td height="20">
 													<input type="checkbox" name="delid" value=<s:property value="lno" /> />
 													</td>
+												     <td>
+												     	<s:if test='ltype2 == null'>总栏
+												     	 </s:if>
+												     	 <s:elseif test='ltype3 == null'>大类
+												     	 </s:elseif>
+												     	 <s:else>小类
+												     	 </s:else>
+												     
+												     </td>
 												     <td><s:property value="ltype"/></td>
+												     <td><s:property value="ltype2"/></td>
+												     <td><s:property value="ltype3"/></td>
 												     <td><s:if test='lstate == 0'>未审核
 												     	 <td></td>
 												     	 </s:if>
@@ -179,7 +155,7 @@ html {
 												     	 </s:elseif>
 												     </td>
 												     <td>
-												     	<a onclick="renameLm('${lno}','${ltype}','${lstate}');" href="javascript:;">修改</a>
+												     	<a onclick="renameLm('${lno}','${ltype}','${ltype2}','${ltype3}','${lstate}');" href="javascript:;">修改</a>
 													</td>
 												</tr>
 												</s:iterator>

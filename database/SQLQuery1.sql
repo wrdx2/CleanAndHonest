@@ -78,6 +78,42 @@ create table reply(
 	rTime date,
 	constraint id_fk foreign key (rNo) references shenpi (sNo)
 )
+/**
+值班表
+	dNo int 编号,
+	dName 需要值班的人,
+	dDep 所在部门,
+	dState 状态,
+	dStarTime 开始时间,
+	dEndTime 结束时间,
+*/
+drop table duty;
+create table duty(
+	dNo int not null primary key,
+	dName nvarchar(16),
+	dDep nvarchar(50),
+	dState int,
+	dStarTime datetime,
+	dEndTime datetime,
+)
+
+/*
+投票表
+	vNo int not null primary key, 投票编号
+	vName nvarchar(16), 投票问题
+	vNode nvarchar(50), 投票项
+	vHits int, 点击量
+	vState int, 状态
+*/
+drop table vote;
+create table vote(
+	vNo int not null primary key,
+	vName nvarchar(16),
+	vNode nvarchar(50),
+	vHits int,
+	vState int,
+)
+
 /*
 详细信息视图
 */
@@ -92,3 +128,6 @@ from shenpi s, reply r
 where s.sNo=r.rNo;
 
 insert into reply(rNo) select sNo from shenpi;
+
+ALTER TABLE consult ALTER COLUMN cTime datetime
+ALTER TABLE shenpi ALTER COLUMN sTime datetime

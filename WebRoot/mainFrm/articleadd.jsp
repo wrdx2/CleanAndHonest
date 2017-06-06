@@ -65,6 +65,36 @@ html {
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/layer/layer.min.js"></script>
 <link href="../css/css.css" rel="stylesheet" type="text/css" />
 <link href="../css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+function sub() {
+	var text = window.frames["text"].document.getElementById("textarea").value;
+	document.getElementById("text").value = text;
+	var flag = true;
+	$("input").each(
+			function() {
+				if ($(this).attr("name") == "title" || $(this).attr("name") == "text") {
+					if ($(this).val() == "") {
+						flag = false;
+					}
+				}
+			});
+	if (flag) {
+		var f = ajaxUpload();
+		if(f){
+			var names = [];
+		   $(":file").each(function(){
+			   if($(this).val() != "" && $(this).attr("id").length <= 6){
+				   names.push($(this).prop("files")[0].name);
+				}
+		   });
+		   $("#files").val(names);
+		   document.forms[0].submit();
+		}
+	} else {
+		alert("请填写完整信息！");
+	}
+}
+</script>
 
 </head>
 
@@ -131,7 +161,7 @@ html {
 												<td height="20" align="right" bgcolor="#FFFFFF">
 													文章所在栏目:
 												</td>
-												<td bgcolor="#FFFFFF"> 
+												<td id="lanmu_type" bgcolor="#FFFFFF"> 
 													<select id="type" name="type"></select>
 												</td>
 											</tr>

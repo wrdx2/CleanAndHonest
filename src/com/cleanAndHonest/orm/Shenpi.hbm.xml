@@ -31,7 +31,7 @@
         <property name="scontent" type="java.lang.String">
             <column name="sContent" not-null="true" />
         </property>
-        <property name="stime" type="java.util.Date">
+        <property name="stime" type="java.sql.Timestamp">
             <column name="sTime" length="10" not-null="true" />
         </property>
         <property name="sattach" type="java.lang.String">

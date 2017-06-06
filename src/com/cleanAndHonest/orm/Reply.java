@@ -1,6 +1,6 @@
 package com.cleanAndHonest.orm;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 /**
  * Reply entity. @author MyEclipse Persistence Tools
@@ -19,7 +19,7 @@ public class Reply implements java.io.Serializable {
 	private String remail;
 	private Integer rtel;
 	private String rcontent;
-	private Date rtime;
+	private Timestamp rtime;
 
 	// Constructors
 
@@ -29,7 +29,7 @@ public class Reply implements java.io.Serializable {
 
 	/** full constructor */
 	public Reply(String rname, String remail, Integer rtel, String rcontent,
-			Date rtime) {
+			Timestamp rtime) {
 		this.rname = rname;
 		this.remail = remail;
 		this.rtel = rtel;
@@ -79,11 +79,11 @@ public class Reply implements java.io.Serializable {
 		this.rcontent = rcontent;
 	}
 
-	public Date getRtime() {
+	public Timestamp getRtime() {
 		return this.rtime;
 	}
 
-	public void setRtime(Date rtime) {
+	public void setRtime(Timestamp rtime) {
 		this.rtime = rtime;
 	}
 

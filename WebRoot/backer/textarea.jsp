@@ -69,12 +69,13 @@
 	RichTextEditor.prototype = {
 		initialize : function(options) {
 			this.setOptions(options);
-			this.drawEditor(this.options.textarea_id);
+			this.drawEditor(this.options.textarea_id,this.options.text_content);
 		},
 		setOptions : function(options) {
 			this.options = { //这里集中设置默认属性
 				id : 'jeditor_' + new Date().getTime(),
-				textarea_id : null
+				textarea_id : null,
+				text_content : null
 			//用于textarea的ID,也就是我们的必选项
 			};
 			extend(this.options, options || {});//这里是用来重写默认属性
@@ -250,10 +251,11 @@
 				el.addEventListener(type, fn, false);
 			}
 		},
-		drawEditor : function(id) {
+		drawEditor : function(id,text_content) {
 			var $ = this, textarea = this.ID(id), toolbar = this.CE('div'), br = this
 					.CE('br'), //用于清除浮动
 			iframe = this.CE('iframe');
+			textarea.value = text_content;
 			$.hide(textarea);
 			textarea.parentNode.insertBefore(toolbar, textarea);
 			textarea.parentNode.insertBefore(br, textarea);
@@ -267,6 +269,8 @@
 			iframeDocument.open();
 			iframeDocument.write('<html><head><style type="text/css">body{ font-family:arial; font-size:13px;border:0; }</style></head></html>');
 			iframeDocument.close();
+			
+			//iframeDocument.body.innerHTML = textarea.value;
 
 			var buttons = {//工具栏的按钮集合
 				'fontname' : [ '字体', -120, -40, 86, 20 ],
@@ -431,7 +435,7 @@
 							case "iconinsertor":
 								if (tag == 'td') {
 									var url = element.getAttribute("url");/*★★★取出url★★★*/
-									_insertHTML("<img src='"+url+"'/>");
+									_insertHTML("<img src=\""+url+"\"/>");
 									$.hide(this);
 								}
 								break;
@@ -585,10 +589,17 @@
 	};
 
 	window.onload = function() {
+		var text = document.getElementById("ptext").value;
 		new RichTextEditor({
 			id : 'editor',
-			textarea_id : 'textarea'
+			textarea_id : 'textarea',
+			text_content : text,
 		});
+		
+		var cache_iframe = document.getElementById("RTE_iframe");
+		var iframeDocument = cache_iframe.contentDocument || cache_iframe.contentWindow.document;
+		iframeDocument.body.innerHTML = text;
+		
 	};
 </script>
 
@@ -596,6 +607,7 @@
 <title>富文本编辑器</title>
 </head>
 <body>
+<input type="hidden" id="ptext" name="ptext" value='${text}' />
 	<form action="#">
 		<textarea id="textarea" wrap="on"></textarea>
 	</form>

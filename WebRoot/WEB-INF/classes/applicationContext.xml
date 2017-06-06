@@ -59,6 +59,8 @@
 				<value>com/cleanAndHonest/orm/VSr.hbm.xml</value>
 				<value>com/cleanAndHonest/orm/Lanmu.hbm.xml</value>
 				<value>com/cleanAndHonest/orm/Article.hbm.xml</value>
+				<value>com/cleanAndHonest/orm/Duty.hbm.xml</value>
+				<value>com/cleanAndHonest/orm/Vote.hbm.xml</value>
 			</list>
 		</property>
 	</bean>
@@ -101,68 +103,111 @@
 		</tx:attributes>
 	</tx:advice>
     
+    <!-- 基本数据库操作 -->
 	<bean id="baseDAO" class="com.cleanAndHonest.DAO.Impl.BaseDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	
+	<!-- 部门表信息 -->
+	<bean id="DepBiz" class="com.cleanAndHonest.Biz.Impl.DepBizImpl">
+		<property name="baseDAO" ref="baseDAO"></property>
+	</bean>
+	
+	<!-- 用户表信息 -->
 	<bean id="userBiz" class="com.cleanAndHonest.Biz.Impl.UserBizImpl">
 		<property name="baseDAO" ref="baseDAO"></property>
 	</bean>
 	
+	<!-- 验证码信息 -->
 	<bean id="checkCode" class="com.cleanAndHonest.Util.newCheckCode"></bean>
 	
-	<!-- 用户管理 -->
-	<bean id="UserAction" class="com.cleanAndHonest.Action.UserAction" scope="prototype">
-		<property name="userBiz" ref="userBiz"></property>
-	</bean>
-	
-	<bean id="changeCheckCode" class="com.cleanAndHonest.Action.changeCheck" scope="prototype">
-		<property name="checkCode" ref="checkCode"></property> 
-	</bean>
-	
-	<!-- 文章管理 -->
-	<bean id="ArticleAction" class="com.cleanAndHonest.Action.ArticleAction" scope="prototype">
-		<property name="article" ref="Article"></property>
-		<property name="lm" ref="Lanmu"></property>
-	</bean>
-	
-	<bean id="Article" class="com.cleanAndHonest.Biz.Impl.ArticleBizImpl">
-		<property name="baseDAO" ref="baseDAO" ></property>
-	</bean>
-	
-	<bean id="Lanmu" class="com.cleanAndHonest.Biz.Impl.LanmuBizImpl">
-		<property name="baseDAO" ref="baseDAO" ></property>
-	</bean>
-	
-	<!-- 查询审批事项列表 -->
+	<!-- 审批表信息 -->
 	<bean id="shenpiBiz" class="com.cleanAndHonest.Biz.Impl.ShenPiBizImpl">
 		<property name="baseDAO" ref="baseDAO" ></property>
 	</bean>
 	
+	<!-- 回复表信息 -->
+	<bean id="replyBiz" class="com.cleanAndHonest.Biz.Impl.ReplyBizImpl">
+		<property name="baseDAO" ref="baseDAO"></property>
+	</bean>
+	
+	<!-- 审批详细表信息 -->
+	<bean id="shenpixinxiBiz" class="com.cleanAndHonest.Biz.Impl.ShenpixinxiBizImpl">
+		<property name="baseDAO" ref="baseDAO"></property>
+	</bean>
+	
+	<!-- 审批信息 -->
+	<bean id="doShenpiBiz" class="com.cleanAndHonest.Biz.Impl.doShenpiBizImpl">
+		<property name="baseDAO" ref="baseDAO"></property>
+	</bean>
+	
+	<!-- 文章表信息 -->
+	<bean id="ArticleBiz" class="com.cleanAndHonest.Biz.Impl.ArticleBizImpl">
+		<property name="baseDAO" ref="baseDAO" ></property>
+	</bean>
+	
+	<!-- 民政互动表信息 -->
+	<bean id="ConsBiz" class="com.cleanAndHonest.Biz.Impl.ConsBizImpl">
+		<property name="baseDAO" ref="baseDAO" ></property>
+	</bean>
+	
+	<!-- 栏目表信息 -->
+	<bean id="LanmuBiz" class="com.cleanAndHonest.Biz.Impl.LanmuBizImpl">
+		<property name="baseDAO" ref="baseDAO" ></property>
+	</bean>
+	
+	<!-- 值班表信息 -->
+	<bean id="DutyBiz" class="com.cleanAndHonest.Biz.Impl.DutyBizImpl">
+		<property name="baseDAO" ref="baseDAO" ></property>
+	</bean>
+	
+	<!-- 投票表信息 -->
+	<bean id="VoteBiz" class="com.cleanAndHonest.Biz.Impl.VoteBizImpl">
+		<property name="baseDAO" ref="baseDAO" ></property>
+	</bean>
+	
+	<!-- 部门管理action -->
+	<bean id="DepAction" class="com.cleanAndHonest.Action.DepAction" scope="prototype">
+		<property name="depBiz" ref="DepBiz"></property>
+	</bean>
+	
+	<!-- 用户管理action -->
+	<bean id="UserAction" class="com.cleanAndHonest.Action.UserAction" scope="prototype">
+		<property name="userBiz" ref="userBiz"></property>
+	</bean>
+	
+	<!-- 验证码操作action -->
+	<bean id="changeCheckCode" class="com.cleanAndHonest.Action.changeCheck" scope="prototype">
+		<property name="checkCode" ref="checkCode"></property>
+	</bean>
+	
+	<!-- 文章、栏目action-->
+	<bean id="ArticleAction" class="com.cleanAndHonest.Action.ArticleAction" scope="prototype">
+		<property name="article" ref="ArticleBiz"></property>
+		<property name="lanmu" ref="LanmuBiz"></property>
+	</bean>
+	
+	<!-- 审批、回复action -->
 	<bean id="shenpiListAction" class="com.cleanAndHonest.Action.shenpiList" scope="prototype">
 		<property name="shenpiBiz" ref="shenpiBiz"></property>
 		<property name="shenpixinxiBiz" ref="shenpixinxiBiz"></property>
 		<property name="replyBiz" ref="replyBiz"></property>
 	</bean>
 	
-	<!-- 审批详细信息 -->
-	<bean id="shenpixinxiBiz" class="com.cleanAndHonest.Biz.Impl.ShenpixinxiBizImpl">
-		<property name="baseDAO" ref="baseDAO"></property>
-	</bean>
-	
-	<!-- 回复信息 -->
-	<bean id="replyBiz" class="com.cleanAndHonest.Biz.Impl.ReplyBizImpl">
-		<property name="baseDAO" ref="baseDAO"></property>
-	</bean>
-	
-	<!-- 审批事项 -->
-	<bean id="doShenpiBiz" class="com.cleanAndHonest.Biz.Impl.doShenpiBizImpl">
-		<property name="baseDAO" ref="baseDAO"></property>
-	</bean>
-	
+	<!-- 审批action -->
 	<bean id="doShenpiAction" class="com.cleanAndHonest.Action.doShenpiAction" scope="prototype">
 		<property name="doShenpiBiz" ref="doShenpiBiz"></property>
 		<property name="shenpiBiz" ref="shenpiBiz"></property>
+	</bean>
+	
+	<!-- 值班action-->
+	<bean id="ButyAction" class="com.cleanAndHonest.Action.ButyAction" scope="prototype">
+		<property name="dutyBiz" ref="DutyBiz"></property>
+	</bean>
+	
+	<!-- 投票action-->
+	<bean id="VoteAction" class="com.cleanAndHonest.Action.VoteAction" scope="prototype">
+		<property name="voteBiz" ref="VoteBiz"></property>
 	</bean>
 	
 </beans>

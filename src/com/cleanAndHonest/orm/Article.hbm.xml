@@ -28,8 +28,14 @@
         <property name="acontent" type="java.lang.String">
             <column name="aContent" />
         </property>
-        <property name="atime" type="java.util.Date">
-            <column name="aTime" length="16" />
+        <property name="atime" type="java.sql.Timestamp">
+            <column name="aTime" length="23" />
+        </property>
+        <property name="ahits" type="java.lang.Integer">
+            <column name="ahits" not-null="true" />
+        </property>
+        <property name="adep" type="java.lang.String">
+            <column name="aDep" />
         </property>
     </class>
 </hibernate-mapping>

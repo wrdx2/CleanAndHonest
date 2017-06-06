@@ -13,7 +13,7 @@
 			<result name="logout" type="redirect">/backer/login.jsp</result>
 		</action>
 		<!-- 验证码 -->
-		<action name="changeCheckCode" class="com.cleanAndHonest.Action.changeCheck">
+		<action name="changeCheckCode" class="changeCheckCode">
 		</action>
 		<!-- 文件上传下载 -->
 		<action name="UploadAction" class="com.cleanAndHonest.Action.UploadAction" method="Upload">
@@ -28,12 +28,17 @@
 				</result>
 		</action>
 	</package>
+	
 	<!-- 文章 -->
 	<package name="article" namespace="/article" extends="struts-default">
 		<action name="*ArticleAction" class="ArticleAction" method="{1}">
 			<!-- 栏目管理 -->
 			<result name="lanmu">/mainFrm/lanmu.jsp</result>
 			<result name="view">/view.jsp</result>
+			<result name="addLm" type="redirectAction">
+				<param name="namespace">/article</param>
+				<param name="actionName">lanmuArticleAction</param>
+			</result>
 			<result name="renameLm" type="redirectAction">
 				<param name="namespace">/article</param>
 				<param name="actionName">lanmuArticleAction</param>
@@ -41,13 +46,42 @@
 			
 			<!-- 文章管理 -->
 			<result name="arList">/mainFrm/article.jsp</result>
-			<result name="look">
-				<param name="location">/mainFrm/articlexinxi.jsp</param>
-				<param name="stat">1</param>
-			</result>
+			<result name="myArList">/mainFrm/article.jsp</result>
+			<result name="look">/mainFrm/articlexinxi.jsp</result>
+			<result name="edit">/mainFrm/editArticle.jsp</result>
 			<result name="add" type="redirectAction">
 				<param name="namespace">/article</param>
 				<param name="actionName">listArticleAction</param>
+			</result>
+			
+			<!-- 前台显示 -->
+			<result name="lanmu_src">/pages/lanmu_src.jsp</result>
+			<result name="ar_src">/pages/ar_src.jsp</result>
+		</action>
+	</package>
+	
+	<!-- 值班 -->
+	<package name="buty" namespace="/buty" extends="struts-default">
+		<action name="*ButyAction" class="ButyAction" method="{1}">
+			<!-- 值班管理 -->
+			<result name="lanmu">/mainFrm/lanmu.jsp</result>
+			<result name="renameLm" type="redirectAction">
+				<param name="namespace">/article</param>
+				<param name="actionName">lanmuArticleAction</param>
+			</result>
+		</action>
+	</package>
+	
+	<!-- 投票 -->
+	<package name="vote" namespace="/vote" extends="struts-default">
+		<action name="*VoteAction" class="VoteAction" method="{1}">
+			<!-- 值班管理 -->
+			<result name="select_vote">/mainFrm/vote.jsp</result>
+			<result name="change">/mainFrm/voteEdit.jsp</result>
+			<result name="look">/mainFrm/voteLook.jsp</result>
+			<result name="afSel" type="redirectAction">
+				<param name="namespace">/vote</param>
+				<param name="actionName">selectVoteAction</param>
 			</result>
 		</action>
 	</package>

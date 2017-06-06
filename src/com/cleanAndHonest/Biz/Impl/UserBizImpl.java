@@ -24,7 +24,7 @@ public class UserBizImpl implements UserBiz {
 		List<User> list = baseDAO.find(hql ,new Object []{user.getUno(),user.getUpassword()});
 		
 		if(list.size() > 0){
-			ServletActionContext.getRequest().getSession().setAttribute("uName", list.get(0).getUname());
+			ServletActionContext.getRequest().getSession().setAttribute("uName", list.get(0).getUname().trim());
 			ServletActionContext.getRequest().getSession().setAttribute("uOffi", list.get(0).getOffice());
 			ActionContext.getContext().getSession().put("user", list.get(0));
 			/*ActionContext.getContext().put("uoffi", "qweqewqweq");*/

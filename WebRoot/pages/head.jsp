@@ -30,7 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	</div>
     	<div id="top_bar">
     		<div id="top_bar1">
-    			<marquee >
+    			<marquee>
     			<strong>欢迎访问高校廉政建设网站！</strong>
             	</marquee>
             </div>

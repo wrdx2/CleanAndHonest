@@ -24,6 +24,10 @@ public class BaseAction extends ActionSupport {
 	public ServletContext serContext = ServletActionContext.getServletContext();
 	public HttpSession session = request.getSession();
 	
+	/**
+	 * 将json对象输出到页面
+	 * @param obj 需要输出的object
+	 */
 	public void WriteJson(Object obj){
 		try {
 			response.setCharacterEncoding("utf-8");

@@ -1,6 +1,6 @@
 package com.cleanAndHonest.orm;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 /**
  * Consult entity. @author MyEclipse Persistence Tools
@@ -22,7 +22,7 @@ public class Consult implements java.io.Serializable {
 	private String caddress;
 	private String ctitle;
 	private String ccontent;
-	private Date ctime;
+	private Timestamp ctime;
 	private String cattach;
 	private Integer creply;
 	private String cpass;
@@ -35,7 +35,7 @@ public class Consult implements java.io.Serializable {
 
 	/** minimal constructor */
 	public Consult(String ctype, String cname, String cemail, Integer ctel,
-			String caddress, String ctitle, String ccontent, Date ctime,
+			String caddress, String ctitle, String ccontent, Timestamp ctime,
 			Integer creply, String cpass) {
 		this.ctype = ctype;
 		this.cname = cname;
@@ -51,7 +51,7 @@ public class Consult implements java.io.Serializable {
 
 	/** full constructor */
 	public Consult(String ctype, String cname, String cemail, Integer ctel,
-			String caddress, String ctitle, String ccontent, Date ctime,
+			String caddress, String ctitle, String ccontent, Timestamp ctime,
 			String cattach, Integer creply, String cpass) {
 		this.ctype = ctype;
 		this.cname = cname;
@@ -132,11 +132,11 @@ public class Consult implements java.io.Serializable {
 		this.ccontent = ccontent;
 	}
 
-	public Date getCtime() {
+	public Timestamp getCtime() {
 		return this.ctime;
 	}
 
-	public void setCtime(Date ctime) {
+	public void setCtime(Timestamp ctime) {
 		this.ctime = ctime;
 	}
 

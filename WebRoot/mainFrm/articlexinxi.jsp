@@ -79,7 +79,6 @@ function viewName(file){
 		}else{
 			fileDir += arr[i];
 		}
-		
 	}
 	
 	$.layer({
@@ -106,25 +105,6 @@ function downloadFile(file){
 	
 	window.location.href="../DownLoadAction?fileName=" + fileDir + "&name=" + filename;
 	
-	/* $.ajax({
-		type : "post",
-		secureuri : false,
-		//url : "../DownloadAction?fileName=" + filename,
-		url : "../DownLoadAction",
-		data : {
-			name : "WRD",
-			dir : "viewFileCache/" + filename,
-			fileName : fileDir
-		}
-		/*, success : function(data, status) {
-			console.log(data + status);
-			alert(data);
-		},
-		error : function(data, status, e) {
-			console.log(data);
-			alert(e);
-		} 
-	}); */
 }
 </script>
 
@@ -142,31 +122,16 @@ function downloadFile(file){
 	}
 	
 	function xianshi(){
-		
-		if($("#stat").val() == "look"){
+		console.log($("#aname").val());
+		console.log($("#cont_att").val());
+		if($("#aname").val().trim() != $("#uName").val().trim()){
+			console.log($("#aname").val().trim() + "不等于" + $("#uName").val().trim());
 			find(1,4).display = 'none';
-		}
-		if((document.getElementById("content").innerHTML).trim() != ""){
-			find(1,1).display ='';
-			find(1,2).display ='';
-			find(1,3).display ='';
-			find(2,1).display ='none';
-			find(2,2).display ='none';
-		}else{
-			find(1,1).display ='none';
-			find(1,2).display ='none';
-			find(1,3).display ='none';
-			find(2,1).display ='';
-			find(2,2).display ='';
 		}
 	}
 	
-	function bianji(){
-		find(1,1).display ='none';
-		find(1,2).display ='none';
-		find(1,3).display ='none';
-		find(2,1).display ='';
-		find(2,2).display ='';
+	function edit(){
+		window.location.href="editArticleAction?ano=" + $("#ano").val();
 	}
 	
 </SCRIPT>
@@ -174,7 +139,9 @@ function downloadFile(file){
 
 <body onload="xianshi()">
 
-<input type="hidden" id="stat" name="dirName" value="<s:property value='stat'/>" />
+<input type="hidden" id="aname" name="aname" value="<s:property value='ar.aname'/>" />
+<input type="hidden" id="ano" name="ano" value="<s:property value='ar.ano'/>" />
+<input type="hidden" id="uName" name="uName" value="${sessionScope.uName}" />
 	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 		<tr>
 			<td height="30">
@@ -241,7 +208,7 @@ function downloadFile(file){
 											<tr id="con11" style="display:">
 												<td align="right" bgcolor="#FFFFFF">发表时间:</td>
 												<td bgcolor="#FFFFFF">
-													<s:property value="sr.rtime"/>
+													<s:property value="ar.atime"/>
 												</td>
 											</tr>
 											<tr>
@@ -249,7 +216,10 @@ function downloadFile(file){
 													文章链接地址:
 												</td>
 												<td bgcolor="#FFFFFF">
+													<a href="<s:property value="ar.aaddress"/>">
 													<s:property value="ar.aaddress"/>
+													</a>
+													
 												</td>
 											</tr>
 											<tr>
@@ -263,76 +233,30 @@ function downloadFile(file){
 											<tr>
 												<td align="right" bgcolor="#FFFFFF">文章附件:</td>
 												<td bgcolor="#FFFFFF">
-													<!-- 带参数的<s:a/> 标签的写法 -->
-													<!-- 附件的在线预览 -->
-													<%-- <s:url id="url" action="../article/viewArticleAction">
-														<s:param name="fileName">
-															<s:property value='sr.sattach'/>
-														</s:param>
-													</s:url>
-													<s:a href="%{url}">
-														<s:property value='sr.aattach'/>
-													</s:a> --%>
-													<a id="view" onclick="viewName('${ar.aattach}');"><s:property value='ar.aattach'/>
-													</a>
-													<!-- 附件的下载 -->
-													<%-- <s:url id="url" action="../DownLoadAction">
-														<s:param name="fileName">
-															<s:property value='ar.aattach'/>
-														</s:param>
-													</s:url>
-													<s:a href="%{url}">
-														下载
-													</s:a> --%>
+													<s:if test="ar.aattach != ''">
+													<s:property value="ar.aattach"/>&nbsp;
+													<a id="view" onclick="viewName('${ar.aattach}');">预览
+													</a>&nbsp;
 													<a id="downloadFile" onclick="downloadFile('${ar.aattach}');">下载
 													</a>
+													</s:if>
 												</td>
 											</tr>
 											<tr>
 												<td align="right" bgcolor="#FFFFFF" height="80">
 													文章内容:
 												</td>
-												<td bgcolor="#FFFFFF">
-													<s:property value="ar.acontent"/>
+												<td id="content" bgcolor="#FFFFFF">
+													<s:property value="ar.acontent" escape="false"/>
 												</td>
 											</tr>
 											
 											<TR id="con13" style="display:">
 												<TD colspan="2" align="center" height="40px">
 													<input id="con14" type="button" value="修改" style="display:"
-													class="button" onclick="bianji()"/>
+													class="button" onclick="edit();"/>
 													<input type="button" name="reset" value="返回"
 													class="button" onclick="window.history.go(-1);"/>
-												</TD>
-											</TR>
-											
-											<tr id="con21" style="display:none">
-												<td align="right" bgcolor="#FFFFFF" height="200px">
-													回复:
-												</td>
-												<td bgcolor="#FFFFFF" height="200px">
-												<iframe name="text" src="${pageContext.request.contextPath}/backer/textarea.jsp" 
-												height="100%" width="98%" frameborder="0" 
-												scrolling="no" >
-												</iframe>
-												<!-- <textarea style="height:100%;width:100%;">
-												</textarea> -->
-												</td>
-											</tr>
-											<TR id="con22" style="display:none">
-												<TD colspan="2" align="center" height="40px">
-												<form name="fom" id="fom" method="post" action="doShenpi">
-													<input type="button" value="回复" class="button" 
-													onclick="sub()"/>
-													<input type="button" name="reset" value="返回" 
-													class="button" onclick="window.history.go(-1);"/>
-													<div style="hight:0px;">
-													<input id="text" name="text" type="text"
-													style="display:none;"/>
-													<s:textfield name="rno" value="%{sr.sno}"
-													cssStyle="display:none;" />
-													</div>
-												</form>
 												</TD>
 											</TR>
 										</table>

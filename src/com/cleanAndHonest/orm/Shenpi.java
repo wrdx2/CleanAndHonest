@@ -1,6 +1,6 @@
 package com.cleanAndHonest.orm;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 /**
  * Shenpi entity. @author MyEclipse Persistence Tools
@@ -22,7 +22,7 @@ public class Shenpi implements java.io.Serializable {
 	private String saddress;
 	private String stitle;
 	private String scontent;
-	private Date stime;
+	private Timestamp stime;
 	private String sattach;
 	private Integer sstate;
 	private String spass;
@@ -35,7 +35,7 @@ public class Shenpi implements java.io.Serializable {
 
 	/** minimal constructor */
 	public Shenpi(String sname, String sdep, String semail, Integer stel,
-			String saddress, String stitle, String scontent, Date stime,
+			String saddress, String stitle, String scontent, Timestamp stime,
 			Integer sstate, String spass) {
 		this.sname = sname;
 		this.sdep = sdep;
@@ -51,7 +51,7 @@ public class Shenpi implements java.io.Serializable {
 
 	/** full constructor */
 	public Shenpi(String sname, String sdep, String semail, Integer stel,
-			String saddress, String stitle, String scontent, Date stime,
+			String saddress, String stitle, String scontent, Timestamp stime,
 			String sattach, Integer sstate, String spass) {
 		this.sname = sname;
 		this.sdep = sdep;
@@ -132,11 +132,11 @@ public class Shenpi implements java.io.Serializable {
 		this.scontent = scontent;
 	}
 
-	public Date getStime() {
+	public Timestamp getStime() {
 		return this.stime;
 	}
 
-	public void setStime(Date stime) {
+	public void setStime(Timestamp stime) {
 		this.stime = stime;
 	}
 
